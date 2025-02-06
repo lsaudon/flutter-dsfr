@@ -4,14 +4,49 @@ import 'package:flutter_dsfr/typographies/typographies.dart';
 
 // Dark/Light mode
 // Kind primary secondary tertiary
+// vérifier les couleurs, les gris, ...
 // disabled
 // focus
 // icones (gauche, droite, seul)
 
 class Boutons extends StatelessWidget {
+  final Color textColor;
+  final Color fillColor;
+  final Color hoverColor;
+  final Color splashColor;
+  final Color highlightColor;
   final void Function() onPressed;
 
-  const Boutons({super.key, required this.onPressed});
+  const Boutons._({
+    required this.onPressed,
+    required this.textColor,
+    required this.fillColor,
+    required this.hoverColor,
+    required this.splashColor,
+    required this.highlightColor,
+  });
+
+  factory Boutons.primary({required void Function() onPressed}) {
+    return Boutons._(
+      textColor: Colors.white,
+      fillColor: Couleurs.blueFranceSun113,
+      hoverColor: Couleurs.blueFranceSun113Hover,
+      splashColor: Couleurs.blueFranceSun113Active,
+      highlightColor: Couleurs.blueFranceSun113Active,
+      onPressed: onPressed,
+    );
+  }
+
+  factory Boutons.secondary({required void Function() onPressed}) {
+    return Boutons._(
+      textColor: Couleurs.blueFranceSun113,
+      fillColor: Colors.transparent,
+      hoverColor: Couleurs.grey1000Hover,
+      splashColor: Couleurs.grey1000Active,
+      highlightColor: Couleurs.grey1000Active,
+      onPressed: onPressed,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +57,15 @@ class Boutons extends StatelessWidget {
       hoverElevation: 0,
       disabledElevation: 0,
       highlightElevation: 0,
-      fillColor: Couleurs.blueFranceSun113,
-      hoverColor: Couleurs.blueFranceSun113Hover,
-      splashColor: Couleurs.blueFranceSun113Active,
-      highlightColor: Couleurs.blueFranceSun113Active,
+      fillColor: fillColor,
+      hoverColor: hoverColor,
+      splashColor: splashColor,
+      highlightColor: highlightColor,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         child: Text(
           'Bouton',
-          style: TypographiesTextStyle.bodySmMedium(color: Colors.white),
+          style: TypographiesTextStyle.bodySmMedium(color: textColor),
         ),
       ),
     );

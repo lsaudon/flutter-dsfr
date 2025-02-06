@@ -41,7 +41,15 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Boutons(onPressed: () => {})),
+      body: SafeArea(
+        child: Column(
+          spacing: 8,
+          children: [
+            Boutons.primary(onPressed: () => {}),
+            Boutons.secondary(onPressed: () => {}),
+          ],
+        ),
+      ),
     );
   }
 }
