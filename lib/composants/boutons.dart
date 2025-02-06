@@ -23,6 +23,9 @@ class Boutons extends StatelessWidget {
       disabledElevation: 0,
       highlightElevation: 0,
       fillColor: Couleurs.blueFranceSun113,
+      hoverColor: Couleurs.blueFranceSun113Hover,
+      splashColor: Couleurs.blueFranceSun113Active,
+      highlightColor: Couleurs.blueFranceSun113Active,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         child: Text(
