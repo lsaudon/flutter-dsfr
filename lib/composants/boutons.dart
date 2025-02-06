@@ -15,16 +15,19 @@ class Boutons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return RawMaterialButton(
       onPressed: onPressed,
-      child: Container(
-        color: Couleurs.blueFranceSun113,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-          child: Text(
-            'Bouton',
-            style: TypographiesTextStyle.bodySmMedium(color: Colors.white),
-          ),
+      elevation: 0,
+      focusElevation: 0,
+      hoverElevation: 0,
+      disabledElevation: 0,
+      highlightElevation: 0,
+      fillColor: Couleurs.blueFranceSun113,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        child: Text(
+          'Bouton',
+          style: TypographiesTextStyle.bodySmMedium(color: Colors.white),
         ),
       ),
     );
