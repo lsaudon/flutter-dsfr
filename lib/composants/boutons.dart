@@ -15,6 +15,7 @@ class Boutons extends StatelessWidget {
   final Color hoverColor;
   final Color splashColor;
   final Color highlightColor;
+  final ShapeBorder? shape;
   final void Function() onPressed;
 
   const Boutons._({
@@ -24,6 +25,7 @@ class Boutons extends StatelessWidget {
     required this.hoverColor,
     required this.splashColor,
     required this.highlightColor,
+    this.shape,
   });
 
   factory Boutons.primary({required void Function() onPressed}) {
@@ -45,6 +47,7 @@ class Boutons extends StatelessWidget {
       splashColor: Couleurs.grey1000Active,
       highlightColor: Couleurs.grey1000Active,
       onPressed: onPressed,
+      shape: RoundedRectangleBorder(side: BorderSide(color: Couleurs.blueFranceSun113, width: 1)),
     );
   }
 
@@ -61,6 +64,7 @@ class Boutons extends StatelessWidget {
       hoverColor: hoverColor,
       splashColor: splashColor,
       highlightColor: highlightColor,
+      shape: shape ?? const RoundedRectangleBorder(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         child: Text(
