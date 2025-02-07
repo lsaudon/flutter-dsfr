@@ -110,6 +110,7 @@ class Couleurs {
   static const grey525 = Color(0xFF7b7b7b);
   static const grey625 = Color(0xFF929292);
   static const grey850 = Color(0xFFcecece);
+  static const grey900 = Color(0xFFdddddd);
   static const grey925 = Color(0xFFe5e5e5);
   static const grey950 = Color(0xFFeeeeee);
   static const grey975 = Color(0xFFdfdfdf);

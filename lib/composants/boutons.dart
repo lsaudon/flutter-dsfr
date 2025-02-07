@@ -47,7 +47,25 @@ class Boutons extends StatelessWidget {
       splashColor: Couleurs.grey1000Active,
       highlightColor: Couleurs.grey1000Active,
       onPressed: onPressed,
-      shape: RoundedRectangleBorder(side: BorderSide(color: Couleurs.blueFranceSun113, width: 1)),
+      shape: RoundedRectangleBorder(
+          side: BorderSide(color: Couleurs.blueFranceSun113, width: 1)),
+    );
+  }
+
+  factory Boutons.tertiary(
+      {required void Function() onPressed, bool withoutBorder = false}) {
+    return Boutons._(
+      textColor: Couleurs.blueFranceSun113,
+      fillColor: Colors.transparent,
+      hoverColor: Couleurs.grey1000Hover,
+      splashColor: Couleurs.grey1000Active,
+      highlightColor: Couleurs.grey1000Active,
+      onPressed: onPressed,
+      shape: withoutBorder
+          ? null
+          : RoundedRectangleBorder(
+              side: BorderSide(color: Couleurs.grey900, width: 1),
+            ),
     );
   }
 

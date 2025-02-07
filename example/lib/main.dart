@@ -47,6 +47,8 @@ class MyHomePage extends StatelessWidget {
           children: [
             Boutons.primary(onPressed: () => {}),
             Boutons.secondary(onPressed: () => {}),
+            Boutons.tertiary(onPressed: () => {}),
+            Boutons.tertiary(onPressed: () => {}, withoutBorder: true),
           ],
         ),
       ),
