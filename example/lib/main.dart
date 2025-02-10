@@ -1,5 +1,21 @@
+import 'package:accessibility_tools/accessibility_tools.dart';
+import 'package:example/accordions_page.dart';
+import 'package:example/buttons_page.dart';
+import 'package:example/checkbox_page.dart';
+import 'package:example/colors_page.dart';
+import 'package:example/form_messages_page.dart';
+import 'package:example/icons_page.dart';
+import 'package:example/inputs_page.dart';
+import 'package:example/links_page.dart';
+import 'package:example/master_page.dart';
+import 'package:example/modals_page.dart';
+import 'package:example/radios_page.dart';
+import 'package:example/sandbox_page.dart';
+import 'package:example/select_page.dart';
+import 'package:example/tags_page.dart';
+import 'package:example/text_page.dart';
+import 'package:example/toggles_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/composants/boutons.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,50 +24,29 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          spacing: 8,
-          children: [
-            Boutons.primary(onPressed: () => {}),
-            Boutons.secondary(onPressed: () => {}),
-            Boutons.tertiary(onPressed: () => {}),
-            Boutons.tertiary(onPressed: () => {}, withoutBorder: true),
+  Widget build(final context) => MaterialApp(
+        home: MasterPage(
+          pageItems: [
+            SandboxPage.model,
+            TextPage.model,
+            AccordionsPage.model,
+            ButtonsPage.model,
+            CheckboxPage.model,
+            ColorsPage.model,
+            SelectPage.model,
+            FormMessagesPage.model,
+            IconsPage.model,
+            InputsPage.model,
+            LinksPage.model,
+            ModalsPage.model,
+            RadiosPage.model,
+            TagsPage.model,
+            TogglesPage.model,
           ],
         ),
-      ),
-    );
-  }
+        builder: (final context, final child) =>
+            AccessibilityTools(child: child),
+        debugShowCheckedModeBanner: false,
+      );
 }
