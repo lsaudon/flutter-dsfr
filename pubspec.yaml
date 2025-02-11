@@ -22,6 +22,25 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   fonts:
+    - family: Marianne
+      fonts:
+        - asset: assets/fonts/Marianne-Light.otf
+          weight: 300
+        - asset: assets/fonts/Marianne-LightItalic.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Marianne-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Marianne-RegularItalic.otf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Marianne-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Marianne-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Marianne-BoldItalic.otf
+          weight: 700
+          style: italic
     - family: DsfrIcons
       fonts:
         - asset: assets/icons/Dsfr-Icons.otf

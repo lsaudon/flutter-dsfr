@@ -9,7 +9,7 @@ class DsfrTextStyle extends TextStyle {
     super.color = DsfrColors.grey50,
     super.fontStyle = FontStyle.normal,
   }) : super(
-          package: 'dsfr',
+          package: 'flutter_dsfr',
           fontFamily: 'Marianne',
           fontSize: fontSize,
           height: 1.4,
@@ -97,5 +97,5 @@ class DsfrTextStyle extends TextStyle {
       : this(fontSize: 12, fontWeight: FontWeight.bold, color: color);
 
   const DsfrTextStyle.fontFamily()
-      : super(package: 'dsfr', fontFamily: 'Marianne');
+      : super(package: 'flutter_dsfr', fontFamily: 'Marianne');
 }
