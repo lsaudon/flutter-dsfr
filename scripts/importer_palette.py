@@ -89,12 +89,15 @@ def filter_unique(couleurs: list[Couleur]) -> list[Couleur]:
 
 def template_dart_file() -> str:
     return """
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-class Couleurs {
-  const Couleurs._();
+class DsfrColors {
+  const DsfrColors._();
 
   <%COULEURS%>
+
+  // Missing from the palette
+  static const focus525 = Color(0xFF0A76F6);
 }
     """.strip()
 
@@ -124,7 +127,7 @@ def generate_dart_colors(couleurs: list[Couleur]):
 
 def write_dart_file(dart: str):
     os.makedirs("./gen", exist_ok=True)
-    with open("./gen/couleurs.dart", "w") as file:
+    with open("./gen/colors.g.dart", "w") as file:
         file.write(dart)
 
 
