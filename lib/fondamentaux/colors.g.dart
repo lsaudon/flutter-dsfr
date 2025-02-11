@@ -1079,6 +1079,7 @@ class DsfrColors {
   static const beigeGrisGalet75Hover = Color(0xFF453e37);
   static const beigeGrisGalet75Active = Color(0xFF595148);
 
-  // Missing from the palette
+  // Missing from the palette website
+  static const blueFrance113 = Color(0xFF00008F);
   static const focus525 = Color(0xFF0A76F6);
 }
