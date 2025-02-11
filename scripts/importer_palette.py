@@ -136,6 +136,8 @@ class DsfrColors {
 
   // Missing from the palette website
   static const blueFrance113 = Color(0xFF00008F);
+  static const blueFrance113Active = Color(0xFF2424FF);
+  static const blueFrance113Hover = Color(0xFF1414FF);
   static const focus525 = Color(0xFF0A76F6);
 }
     """.strip()
@@ -183,6 +185,12 @@ def dart_decision_functions(decision: Decision) -> str:
     static Color {dart_name}(BuildContext context) {{
         return isLightMode(context) ? DsfrColors.{dart_light} : DsfrColors.{dart_dark};
     }}
+    static Color {dart_name}Hover(BuildContext context) {{
+        return isLightMode(context) ? DsfrColors.{dart_light}Hover : DsfrColors.{dart_dark}Hover;
+    }}
+    static Color {dart_name}Active(BuildContext context) {{
+        return isLightMode(context) ? DsfrColors.{dart_light}Active : DsfrColors.{dart_dark}Active;
+    }}
     """
 
 
@@ -197,9 +205,10 @@ def generate_dart_decisions(decisions: list[Decision]) -> str:
 
 
 def write_dart_file(content: str, filename: str):
-    os.makedirs("./gen", exist_ok=True)
-    with open(f"./gen/{filename}.g.dart", "w") as file:
+    path = f"./lib/fondamentaux/{filename}.g.dart"
+    with open(path, "w") as file:
         file.write(content)
+        os.system(f"dart format \"{path}\" -l 120")
 
 
 # Main

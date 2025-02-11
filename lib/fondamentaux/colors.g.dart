@@ -1081,5 +1081,7 @@ class DsfrColors {
 
   // Missing from the palette website
   static const blueFrance113 = Color(0xFF00008F);
+  static const blueFrance113Active = Color(0xFF2424FF);
+  static const blueFrance113Hover = Color(0xFF1414FF);
   static const focus525 = Color(0xFF0A76F6);
 }

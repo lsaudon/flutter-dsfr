@@ -110,6 +110,3 @@ venv.bak/
 
 # PyPI configuration file
 .pypirc
-
-# gen
-gen/
