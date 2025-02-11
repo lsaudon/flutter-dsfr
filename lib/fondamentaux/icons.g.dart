@@ -1,3 +1,4 @@
+// ignore_for_file: unintended_html_in_doc_comment
 // Generated code: do not hand-edit.
 
 // Generated using icon_font_generator.
@@ -15,7 +16,7 @@ import 'package:flutter/widgets.dart';
 /// project's `pubspec.yaml` file in the `fonts` section. This ensures that
 /// the "DsfrIcons" font is included in your application. This font is used to
 /// display the icons. For example:
-/// 
+///
 /// ```yaml
 /// flutter:
 ///   fonts:
@@ -293,7 +294,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__buildings ancient pavilion fill__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMTIuNTEzIDIuMDAyYTkuMDA0IDkuMDA0IDAgMCAwIDkuOTcgNS44NzZBNC41MDEgNC41MDEgMCAwIDEgMTkgMTEuODg4VjE5bDIgLjAwMXYySDN2LTJoMnYtNy4xMTNhNC41MDMgNC41MDMgMCAwIDEtMy40ODQtNC4wMSA5LjAwNCA5LjAwNCAwIDAgMCA5Ljk3Mi01Ljg3NmgxLjAyNVpNMTcgMTJIN3Y3aDEwdi03WiIvPjwvc3ZnPg=='>
-  static const buildingsAncientPavilionFill = IconData(0xe034, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const buildingsAncientPavilionFill =
+      IconData(0xe034, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__buildings ancient gate fill__"
   ///
@@ -328,7 +330,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__buildings ancient pavilion line__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMTIuNTEzIDIuMDAyYTkuMDA0IDkuMDA0IDAgMCAwIDkuOTcgNS44NzZBNC41MDEgNC41MDEgMCAwIDEgMTkgMTEuODg4VjE5bDIgLjAwMXYySDN2LTJoMnYtNy4xMTNhNC41MDMgNC41MDMgMCAwIDEtMy40ODQtNC4wMSA5LjAwNCA5LjAwNCAwIDAgMCA5Ljk3Mi01Ljg3NmgxLjAyNVpNMTcgMTJIN3Y3aDEwdi03Wm0tNS02LjY3NHYuMDAxbC0uMTEuMTU1QTExLjAxMiAxMS4wMTIgMCAwIDEgNS40IDkuNzM2bC0uMzU4LjA3My42NzMuMTloMTIuNTczbC42NjgtLjE5LS4wMTEtLjAwMmExMS4wMSAxMS4wMSAwIDAgMS02LjgzNi00LjMyNkwxMiA1LjMyNloiLz48L3N2Zz4='>
-  static const buildingsAncientPavilionLine = IconData(0xe03b, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const buildingsAncientPavilionLine =
+      IconData(0xe03b, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__buildings ancient gate line__"
   ///
@@ -368,7 +371,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__development git repository commits fill__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJtMTMgMTIgNCA1aC0zdjZoLTJ2LTZIOWw0LTVabTctMTBhMSAxIDAgMCAxIDEgMXYxN2ExIDEgMCAwIDEtMSAxaC00di0yaDN2LTNoLS44TDEzIDkuNSA3LjY0NyAxNkg2LjVhMS41IDEuNSAwIDAgMCAwIDNIMTB2Mkg2LjVBMy41IDMuNSAwIDAgMSAzIDE3LjVWNWEzIDMgMCAwIDEgMy0zaDE0Wk05IDhIN3YyaDJWOFptMC0zSDd2MmgyVjVaIi8+PC9zdmc+'>
-  static const developmentGitRepositoryCommitsFill = IconData(0xe043, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const developmentGitRepositoryCommitsFill =
+      IconData(0xe043, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__development terminal box fill__"
   ///
@@ -398,7 +402,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__development git repository commits line__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJtMTMgMTIgNCA1aC0zdjZoLTJ2LTZIOWw0LTVabTctMTBhMSAxIDAgMCAxIDEgMXYxN2ExIDEgMCAwIDEtMSAxaC00di0yaDN2LTNoLTF2LTJoMVY0SDZ2MTAuMDM1QTMuNTMgMy41MyAwIDAgMSA2LjUgMTRIOHYySDYuNWExLjUgMS41IDAgMCAwIDAgM0gxMHYySDYuNUEzLjUgMy41IDAgMCAxIDMgMTcuNVY1YTMgMyAwIDAgMSAzLTNoMTRaTTkgOHYySDdWOGgyWm0wLTN2Mkg3VjVoMloiLz48L3N2Zz4='>
-  static const developmentGitRepositoryCommitsLine = IconData(0xe049, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const developmentGitRepositoryCommitsLine =
+      IconData(0xe049, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__development code box line__"
   ///
@@ -408,7 +413,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__development terminal window line__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMjEgM2ExIDEgMCAwIDEgMSAxdjE2YTEgMSAwIDAgMS0xIDFIM2ExIDEgMCAwIDEtMS0xVjRhMSAxIDAgMCAxIDEtMWgxOFptLTEgOEg0djhoMTZ2LThaTTggMTJ2NUg1di01aDNabTEyLTdINHY0aDE2VjVaTTcgNnYySDVWNmgyWm00IDB2Mkg5VjZoMloiLz48L3N2Zz4='>
-  static const developmentTerminalWindowLine = IconData(0xe04b, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const developmentTerminalWindowLine =
+      IconData(0xe04b, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__development bug line__"
   ///
@@ -418,17 +424,20 @@ abstract final class DsfrIcons {
   /// Font icon named "__development git repository private fill__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMTIgMWE2IDYgMCAwIDEgNiA2djFoMmExIDEgMCAwIDEgMSAxdjEyYTEgMSAwIDAgMS0xIDFINGExIDEgMCAwIDEtMS0xVjlhMSAxIDAgMCAxIDEtMWgyVjdhNiA2IDAgMCAxIDYtNlpNOSAxN0g3djJoMnYtMlptMC0zSDd2Mmgydi0yWm0wLTNIN3YyaDJ2LTJabTMtOGE0IDQgMCAwIDAtNCA0djFoOFY3YTQgNCAwIDAgMC00LTRaIi8+PC9zdmc+'>
-  static const developmentGitRepositoryPrivateFill = IconData(0xe04d, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const developmentGitRepositoryPrivateFill =
+      IconData(0xe04d, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__development git pull request line__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMTUgMnYzaDJhMiAyIDAgMCAxIDIgMnY4LjE3YTMuMDAxIDMuMDAxIDAgMSAxLTIgMFY3aC0ydjNsLTQuNS00TDE1IDJaTTYgM2EzLjAwMSAzLjAwMSAwIDAgMSAxIDUuODN2Ni4zNGEzLjAwMSAzLjAwMSAwIDEgMS0yIDBWOC44M0EzLjAwMSAzLjAwMSAwIDAgMSA2IDNabTAgMTRhMSAxIDAgMSAwIDAgMiAxIDEgMCAwIDAgMC0yWm0xMiAwYTEgMSAwIDEgMCAwIDIgMSAxIDAgMCAwIDAtMlpNNiA1YTEgMSAwIDEgMCAwIDIgMSAxIDAgMCAwIDAtMloiLz48L3N2Zz4='>
-  static const developmentGitPullRequestLine = IconData(0xe04e, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const developmentGitPullRequestLine =
+      IconData(0xe04e, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__development git repository fill__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMjAgMmExIDEgMCAwIDEgMSAxdjE3YTEgMSAwIDAgMS0xIDFoLTd2Mi41bC0zLTItMyAyVjIxaC0uNUEzLjUgMy41IDAgMCAxIDMgMTcuNVY1YTMgMyAwIDAgMSAzLTNoMTRabS0xIDE0SDYuNWExLjUgMS41IDAgMCAwIDAgM0g3di0yaDZ2Mmg2di0zWk05IDExSDd2Mmgydi0yWm0wLTNIN3YyaDJWOFptMC0zSDd2MmgyVjVaIi8+PC9zdmc+'>
-  static const developmentGitRepositoryFill = IconData(0xe04f, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const developmentGitRepositoryFill =
+      IconData(0xe04f, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__development git merge fill__"
   ///
@@ -448,7 +457,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__development git pull request fill__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMTUgNWgyYTIgMiAwIDAgMSAyIDJ2OC4xN2EzLjAwMSAzLjAwMSAwIDEgMS0yIDBWN2gtMnYzbC00LjUtNEwxNSAydjNaTTUgOC44M2EzLjAwMSAzLjAwMSAwIDEgMSAyIDB2Ni4zNGEzLjAwMSAzLjAwMSAwIDEgMS0yIDBWOC44M1oiLz48L3N2Zz4='>
-  static const developmentGitPullRequestFill = IconData(0xe053, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const developmentGitPullRequestFill =
+      IconData(0xe053, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__development git merge line__"
   ///
@@ -458,7 +468,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__development git repository line__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMjAgMmExIDEgMCAwIDEgMSAxdjE3YTEgMSAwIDAgMS0xIDFoLTd2Mi41bC0zLTItMyAyVjIxaC0uNUEzLjUgMy41IDAgMCAxIDMgMTcuNVY1YTMgMyAwIDAgMSAzLTNoMTRabS0xIDE0SDYuNWExLjUgMS41IDAgMCAwIDAgM0g3di0yaDZ2Mmg2di0zWm0wLTEySDZ2MTAuMDM1QTMuNTMgMy41MyAwIDAgMSA2LjUgMTRIMTlWNFpNOSAxMXYySDd2LTJoMlptMC0zdjJIN1Y4aDJabTAtM3YySDdWNWgyWiIvPjwvc3ZnPg=='>
-  static const developmentGitRepositoryLine = IconData(0xe055, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const developmentGitRepositoryLine =
+      IconData(0xe055, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__development bug fill__"
   ///
@@ -473,12 +484,14 @@ abstract final class DsfrIcons {
   /// Font icon named "__development terminal window fill__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMjEgM2ExIDEgMCAwIDEgMSAxdjE2YTEgMSAwIDAgMS0xIDFIM2ExIDEgMCAwIDEtMS0xVjRhMSAxIDAgMCAxIDEtMWgxOFptLTEgN0g0djloMTZ2LTlaTTggMTF2NUg1di01aDNaTTcgNkg1djJoMlY2Wm00IDBIOXYyaDJWNloiLz48L3N2Zz4='>
-  static const developmentTerminalWindowFill = IconData(0xe058, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const developmentTerminalWindowFill =
+      IconData(0xe058, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__development git repository private line__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMTIgMWE2IDYgMCAwIDEgNiA2djFoMmExIDEgMCAwIDEgMSAxdjEyYTEgMSAwIDAgMS0xIDFINGExIDEgMCAwIDEtMS0xVjlhMSAxIDAgMCAxIDEtMWgyVjdhNiA2IDAgMCAxIDYtNlptNyA5SDZ2MTBoMTNWMTBaTTkgMTd2Mkg3di0yaDJabTAtM3YySDd2LTJoMlptMC0zdjJIN3YtMmgyWm0zLThhNCA0IDAgMCAwLTQgNHYxaDhWN2E0IDQgMCAwIDAtNC00WiIvPjwvc3ZnPg=='>
-  static const developmentGitRepositoryPrivateLine = IconData(0xe059, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const developmentGitRepositoryPrivateLine =
+      IconData(0xe059, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__health mental health line__"
   ///
@@ -973,7 +986,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__others fr mental disabilities fill__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMjAuOCAxLjJ2NC41YzEuMS42IDEuOSAyLjIgMiA0LjIgMCAyLS44IDMuNi0yIDQuMnYuM2MtLjQgNS41LTMuNCA4LjQtOS4zIDguNEg2LjZjLTIuMDc1LS4wODMtMy44MDUtMS44Mi00LjUwNS0yLjUyMi0uMTQ0LS4xNDQtLjI0NC0uMjQ0LS4yOTUtLjI3OGwtLjYtLjhMMi44IDE4bC42LjhjLjUuNiAxLjkgMi4xIDMuMiAyLjFoNC4xVjE4SDEwYy0xLjggMC0zLjUtMS4xLTQuMS0yLjhsLS4zLS43IDEuNS0uNi4zLjdjLjQgMS4xIDEuNSAxLjggMi43IDEuOGguN3YtMi4yaDIuNWMuMyAwIC42LS4yLjgtLjUuMi0uMy4yLS43LjEtMWwtMy40LTcuNFYxLjJoMTBabS03LjUgMTYuN2MxLjggMCAzLjQtMS4xIDQuMS0yLjdsLjMtLjctMS4zLS41LS4zLjZjLS41IDEuMi0xLjYgMS45LTIuOCAxLjloLS43djEuNGguN1ptNC4zLTkuOEgxOXYtLjdDMTkgNi4xIDE3LjkgNSAxNi42IDVjLTEuMyAwLTIuNCAxLjEtMi40IDIuNHYuN2gxLjR2LS43YzAtLjYuNC0xIDEtMXMxIC41IDEgMXYuN1oiLz48cGF0aCBkPSJNNy4zIDYuNDUxYy0uNSAwLS45LjM4OC0uOS44NzNWOC4xSDQuOHYtLjc3NmMwLTEuMzU3IDEtMi40MjQgMi40LTIuNDI0czIuNSAxLjA2NyAyLjUgMi40MjRWOC4xSDguMXYtLjc3NmMwLS40ODUtLjMtLjg3My0uOC0uODczWiIvPjwvc3ZnPg=='>
-  static const othersFrMentalDisabilitiesFill = IconData(0xe0bc, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const othersFrMentalDisabilitiesFill =
+      IconData(0xe0bc, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__others scales3 fill__"
   ///
@@ -1043,7 +1057,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__others fr mental disabilities line__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNNC44IDcuM2MwLS41LjQtLjkuOS0uOXMuOS40LjkuOXYuOGgxLjZ2LS44QzguMSA1LjkgNyA0LjggNS42IDQuOGMtMS40IDAtMi40IDEuMS0yLjQgMi41di44aDEuNnYtLjhaIi8+PHBhdGggZD0iTTIyLjggOS44YzAtMi0uOC0zLjYtMi00LjJWMS4yaC0ydjYuMmgxYy4zIDAgMSAuOSAxIDIuNSAwIDEuNS0uNiAyLjQtLjkgMi41aC0xdjEuOWMtLjMgNC40LTIuNiA2LjQtNy41IDYuNGgtLjd2LTYuNWgyLjRjLjMgMCAuNi0uMi44LS41LjItLjMuMi0uNi4xLTFsLTMuMy03LjhWMS4yaC0ydjRjMCAuMSAwIC4zLjEuNGwyLjggNi42SDkuN2MtLjUgMC0xIC40LTEgMXYzLjFjLTEtLjItMS44LS43LTIuMi0xLjdsLS4zLS43LTEuNS42LjMuNmMuNiAxLjUgMiAyLjYgMy43IDIuOHYyLjhINi42Yy0xLjMgMC0yLjctMS41LTMuMi0yLjFsLS42LS44TDEuMiAxOWwuNi44Yy4yLjMgMi4yIDIuOCA0LjcgMi45aDQuOWM1LjkgMCA5LjEtMi45IDkuNS04LjRWMTRjMS4xLS42IDEuOS0yLjIgMS45LTQuMloiLz48cGF0aCBkPSJNMTQuNyA3LjNjMC0uNS40LS45LjktLjlzLjkuNC45Ljl2LjhIMTh2LS44YzAtMS40LTEuMS0yLjUtMi41LTIuNVMxMy4xIDYgMTMuMSA3LjN2LjhoMS42di0uOFpNMTQuOSAxNC41Yy0uNSAxLjEtMS41IDEuOC0yLjcgMS44aC0uOHYxLjZoLjhjMS44IDAgMy41LTEuMSA0LjItMi44bC4zLS43LTEuNS0uNi0uMy43WiIvPjwvc3ZnPg=='>
-  static const othersFrMentalDisabilitiesLine = IconData(0xe0ca, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const othersFrMentalDisabilitiesLine =
+      IconData(0xe0ca, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__others lightbulb line__"
   ///
@@ -1373,7 +1388,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__system fr arrow right s line double__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTAuMSAxMmwtNS00LjkgMS40LTEuNCA2LjQgNi40LTYuNCA2LjRMNS4xIDE3bDUtNXptNiAwbC01LTQuOSAxLjQtMS40IDYuNCA2LjQtNi40IDYuNC0xLjQtMS41IDUtNXoiLz48L3N2Zz4='>
-  static const systemFrArrowRightSLineDouble = IconData(0xe10c, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const systemFrArrowRightSLineDouble =
+      IconData(0xe10c, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__system eye line__"
   ///
@@ -1508,7 +1524,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__system fr arrow right down circle fill__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTE5LjA3MjEgMTkuMDcyMWMzLjkwMzktMy45MDM4IDMuOTAzOS0xMC4yNDA0IDAtMTQuMTQ0Mi0zLjkwMzgtMy45MDM5LTEwLjI0MDQtMy45MDM5LTE0LjE0NDIgMC0zLjkwMzkgMy45MDM4LTMuOTAzOSAxMC4yNDA0IDAgMTQuMTQ0MiAzLjkwMzggMy45MDM5IDEwLjI0MDQgMy45MDM5IDE0LjE0NDIgMFptLTIuODI4OC0yLjgyODhINy43NTY3bDMuMTgyNS0zLjE4MjUtNC4yNDMzLTQuMjQzM0w4LjgxNzUgNi42OTZsNC4yNDMzIDQuMjQzMyAzLjE4MjUtMy4xODI1djguNDg2NloiLz48L3N2Zz4='>
-  static const systemFrArrowRightDownCircleFill = IconData(0xe127, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const systemFrArrowRightDownCircleFill =
+      IconData(0xe127, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__system close circle fill__"
   ///
@@ -1548,7 +1565,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__system fr arrow left s line double__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTMuOSAxMmw1IDUtMS40IDEuNC02LjQtNi40IDYuNC02LjRMMTguOSA3bC01IDV6bS0xLTVsLTEuNC0xLjRMNS4xIDEybDYuNCA2LjQgMS40LTEuNC01LTUgNS01eiIvPjwvc3ZnPg=='>
-  static const systemFrArrowLeftSLineDouble = IconData(0xe12f, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const systemFrArrowLeftSLineDouble =
+      IconData(0xe12f, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__system arrow right s fill__"
   ///
@@ -1623,7 +1641,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__system fr arrow right up circle fill__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTE5LjA3MjEgNC45Mjc5YzMuOTAzOSAzLjkwMzggMy45MDM5IDEwLjI0MDQgMCAxNC4xNDQyLTMuOTAzOCAzLjkwMzktMTAuMjQwNCAzLjkwMzktMTQuMTQ0MiAwLTMuOTAzOS0zLjkwMzgtMy45MDM5LTEwLjI0MDQgMC0xNC4xNDQyIDMuOTAzOC0zLjkwMzkgMTAuMjQwNC0zLjkwMzkgMTQuMTQ0MiAwWm0tMi44Mjg4IDIuODI4OEg3Ljc1NjdsMy4xODI1IDMuMTgyNS00LjI0MzMgNC4yNDMzIDIuMTIxNiAyLjEyMTYgNC4yNDMzLTQuMjQzMyAzLjE4MjUgMy4xODI1VjcuNzU2N1oiLz48L3N2Zz4='>
-  static const systemFrArrowRightUpCircleFill = IconData(0xe13e, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const systemFrArrowRightUpCircleFill =
+      IconData(0xe13e, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__system fr warning fill__"
   ///
@@ -2833,12 +2852,14 @@ abstract final class DsfrIcons {
   /// Font icon named "__communication questionnaire line__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMjEgM2ExIDEgMCAwIDEgMSAxdjE0YTEgMSAwIDAgMS0xIDFINi40NTVMMiAyMi41VjRhMSAxIDAgMCAxIDEtMWgxOFptLTEgMkg0djEzLjM4NUw1Ljc2MyAxN0gyMFY1Wm0tNyA5djJoLTJ2LTJoMlptLS41NC03Ljk3MkEzLjUwMSAzLjUwMSAwIDAgMSAxMiAxM2gtMXYtMmgxYTEuNSAxLjUgMCAxIDAtMS40NzEtMS43OTRsLTEuOTYyLS4zOTNhMy41MDEgMy41MDEgMCAwIDEgMy44OTItMi43ODVaIi8+PC9zdmc+'>
-  static const communicationQuestionnaireLine = IconData(0xe230, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const communicationQuestionnaireLine =
+      IconData(0xe230, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__communication question answer fill__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMjEgOWExIDEgMCAwIDEgMSAxdjEzLjVMMTcuNTQ1IDIwSDlhMSAxIDAgMCAxLTEtMXYtMWgxMC4yMzdMMjAgMTkuMzg1VjloMVptLTQtNmExIDEgMCAwIDEgMSAxdjEySDUuNDU1TDEgMTkuNVY0YTEgMSAwIDAgMSAxLTFoMTVaIi8+PC9zdmc+'>
-  static const communicationQuestionAnswerFill = IconData(0xe231, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const communicationQuestionAnswerFill =
+      IconData(0xe231, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__communication feedback line__"
   ///
@@ -2873,7 +2894,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__communication questionnaire fill__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMjEgM2ExIDEgMCAwIDEgMSAxdjE0YTEgMSAwIDAgMS0xIDFINi40NTVMMiAyMi41VjRhMSAxIDAgMCAxIDEtMWgxOFptLTggMTFoLTJ2Mmgydi0yWk04LjU2NyA4LjgxM2wxLjk2Mi4zOTNBMS41IDEuNSAwIDEgMSAxMiAxMWgtMXYyaDFhMy41IDMuNSAwIDEgMC0zLjQzMy00LjE4N1oiLz48L3N2Zz4='>
-  static const communicationQuestionnaireFill = IconData(0xe238, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const communicationQuestionnaireFill =
+      IconData(0xe238, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__communication feedback fill__"
   ///
@@ -2883,7 +2905,8 @@ abstract final class DsfrIcons {
   /// Font icon named "__communication question answer line__"
   ///
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBkPSJNMjEgOGExIDEgMCAwIDEgMSAxdjEzLjVMMTcuNTQ1IDE5SDlhMSAxIDAgMCAxLTEtMXYtMWgxMC4yMzdMMjAgMTguMzg1VjhoMVptLTQtNmExIDEgMCAwIDEgMSAxdjEySDUuNDU1TDEgMTguNVYzYTEgMSAwIDAgMSAxLTFoMTVabS0xIDJIM3YxMC4zODVMNC43NjMgMTNIMTZWNFoiLz48L3N2Zz4='>
-  static const communicationQuestionAnswerLine = IconData(0xe23a, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
+  static const communicationQuestionAnswerLine =
+      IconData(0xe23a, fontFamily: iconFontFamily, fontPackage: iconFontPackage);
 
   /// Font icon named "__communication message2 fill__"
   ///

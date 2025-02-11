@@ -1,12 +1,3 @@
-//
-// spacing.g.dart
-//
-
-// Do not edit directly
-// Generated on Wed, 17 Jul 2024 13:59:23 GMT
-
-import 'dart:ui';
-
 class DsfrSpacings {
   DsfrSpacings._();
 
