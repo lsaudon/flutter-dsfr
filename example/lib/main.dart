@@ -16,6 +16,7 @@ import 'package:example/tags_page.dart';
 import 'package:example/text_page.dart';
 import 'package:example/toggles_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +27,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(final context) => MaterialApp(
+        theme: ThemeData.light().copyWith(
+          scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
+        ),
+        darkTheme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: DsfrColorDecisions.backgroundDefaultGrey(context),
+        ),
+        themeMode: ThemeMode.system,
         home: MasterPage(
           pageItems: [
             SandboxPage.model,
@@ -45,8 +53,7 @@ class MyApp extends StatelessWidget {
             TogglesPage.model,
           ],
         ),
-        builder: (final context, final child) =>
-            AccessibilityTools(child: child),
+        builder: (final context, final child) => AccessibilityTools(child: child),
         debugShowCheckedModeBanner: false,
       );
 }
