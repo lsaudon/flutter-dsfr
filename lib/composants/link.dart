@@ -1,5 +1,6 @@
 import 'package:flutter_dsfr/atoms/focus_widget.dart';
 import 'package:flutter_dsfr/composants/link_icon_position.dart';
+import 'package:flutter_dsfr/helpers/color_extension.dart';
 import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
@@ -64,7 +65,7 @@ class DsfrLink extends StatefulWidget {
 }
 
 class DsfrLinkForegroundColor extends WidgetStateColor {
-  DsfrLinkForegroundColor() : super(_default.value);
+  DsfrLinkForegroundColor() : super(_default.colorToInt());
 
   static const _default = DsfrColors.blueFranceSun113;
   static const _disabled = DsfrColors.grey625;

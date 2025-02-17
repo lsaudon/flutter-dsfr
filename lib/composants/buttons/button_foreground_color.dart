@@ -1,4 +1,5 @@
 import 'package:flutter_dsfr/composants/buttons/button_variant.dart';
+import 'package:flutter_dsfr/helpers/color_extension.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class DsfrButtonForegroundColor extends WidgetStateColor {
     required final Color disabled,
   })  : _default = $default,
         _disabled = disabled,
-        super($default.value);
+        super($default.colorToInt());
 
   factory DsfrButtonForegroundColor.fromVariant(
     final DsfrButtonVariant variant,
