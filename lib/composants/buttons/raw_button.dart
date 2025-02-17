@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter_dsfr/atoms/focus_widget.dart';
 import 'package:flutter_dsfr/composants/buttons/button.dart';
-import 'package:flutter_dsfr/composants/buttons/button_background_color.dart';
 import 'package:flutter_dsfr/composants/buttons/button_border.dart';
+import 'package:flutter_dsfr/composants/buttons/button_background_color.dart';
 import 'package:flutter_dsfr/composants/buttons/button_foreground_color.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -37,31 +37,11 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
   late final double _minHeight;
   late final EdgeInsetsGeometry _padding;
   late final TextStyle _textStyle;
-  late final DsfrButtonBackgroundColor _backgroundColor;
-  late final DsfrButtonForegroundColor _foregroundColor;
-  late final DsfrButtonBorder _border;
   Timer? _timer;
 
   @override
   void initState() {
     super.initState();
-    _backgroundColor = DsfrButtonBackgroundColor.fromVariant(widget.variant);
-    _foregroundColor = widget.foregroundColor == null
-        ? DsfrButtonForegroundColor.fromVariant(widget.variant)
-        : DsfrButtonForegroundColor(
-            $default: widget.foregroundColor!,
-            disabled: DsfrColors.grey625,
-          );
-    _border = widget.foregroundColor == null
-        ? DsfrButtonBorder.fromVariant(widget.variant)
-        : DsfrButtonBorder(
-            $default: Border.fromBorderSide(
-              BorderSide(color: widget.foregroundColor!),
-            ),
-            disabled: const Border.fromBorderSide(
-              BorderSide(color: DsfrColors.grey925),
-            ),
-          );
     _padding = _getPadding(widget.size);
     _textStyle = _getTextStyle(widget.size);
     _minHeight = _getMinHeight(widget.size);
@@ -104,6 +84,24 @@ class _DsfrRawButtonState extends State<DsfrRawButton>
 
   @override
   Widget build(final context) {
+    final _backgroundColor = DsfrButtonBackgroundColor.fromVariant(widget.variant, context);
+    final _foregroundColor = widget.foregroundColor == null
+        ? DsfrButtonForegroundColor.fromVariant(widget.variant, context)
+        : DsfrButtonForegroundColor(
+      $default: widget.foregroundColor!,
+      disabled: DsfrColorDecisions.textDisabledGrey(context),
+    );
+    final _border = widget.foregroundColor == null
+        ? DsfrButtonBorder.fromVariant(widget.variant, context)
+        : DsfrButtonBorder(
+      $default: Border.fromBorderSide(
+        BorderSide(color: widget.foregroundColor!),
+      ),
+      disabled: Border.fromBorderSide(
+        BorderSide(color: DsfrColorDecisions.borderDisabledGrey(context)),
+      ),
+    );
+
     final textColor = _foregroundColor.resolve(materialStates);
 
     return DsfrFocusWidget(

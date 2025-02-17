@@ -1,7 +1,6 @@
 // ignore_for_file: prefer-declaring-const-constructor
-
 import 'package:flutter_dsfr/composants/buttons/button_variant.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter/material.dart';
 
 class DsfrButtonBorder extends WidgetStateProperty<Border> {
@@ -11,30 +10,33 @@ class DsfrButtonBorder extends WidgetStateProperty<Border> {
   })  : _default = $default,
         _disabled = disabled;
 
-  factory DsfrButtonBorder.fromVariant(final DsfrButtonVariant variant) {
+  factory DsfrButtonBorder.fromVariant(
+      final DsfrButtonVariant variant,
+      final BuildContext context,
+  ) {
     switch (variant) {
       case DsfrButtonVariant.primary:
-      case DsfrButtonVariant.tertiaryWithouBorder:
+      case DsfrButtonVariant.tertiaryWithoutBorder:
         return DsfrButtonBorder(
           $default: const Border(),
           disabled: const Border(),
         );
       case DsfrButtonVariant.secondary:
         return DsfrButtonBorder(
-          $default: const Border.fromBorderSide(
-            BorderSide(color: DsfrColors.blueFranceSun113),
+          $default: Border.fromBorderSide(
+            BorderSide(color: DsfrColorDecisions.borderActionHighBlueFrance(context)),
           ),
-          disabled: const Border.fromBorderSide(
-            BorderSide(color: DsfrColors.grey925),
+          disabled: Border.fromBorderSide(
+            BorderSide(color: DsfrColorDecisions.borderDisabledGrey(context)),
           ),
         );
       case DsfrButtonVariant.tertiary:
         return DsfrButtonBorder(
-          $default: const Border.fromBorderSide(
-            BorderSide(color: DsfrColors.grey900),
+          $default: Border.fromBorderSide(
+            BorderSide(color: DsfrColorDecisions.borderDefaultGrey(context)),
           ),
-          disabled: const Border.fromBorderSide(
-            BorderSide(color: DsfrColors.grey925),
+          disabled: Border.fromBorderSide(
+            BorderSide(color: DsfrColorDecisions.borderDisabledGrey(context)),
           ),
         );
     }
