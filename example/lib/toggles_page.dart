@@ -15,32 +15,43 @@ class TogglesPage extends StatefulWidget {
 }
 
 class _TogglesPageState extends State<TogglesPage> {
-  bool _toggle = false;
+  bool _toggle1 = false;
+  bool _toggle2 = false;
 
   @override
   Widget build(final context) => SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
+          spacing: 16,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DsfrToggleSwitch(
               label: 'Vos favoris',
-              value: _toggle,
+              value: _toggle1,
               onChanged: (final value) {
                 setState(() {
-                  _toggle = value;
+                  _toggle1 = value;
                 });
               },
             ),
-            const SizedBox(height: 16),
             DsfrToggleSwitch(
               label: 'Vos favoris',
-              value: !_toggle,
+              value: !_toggle2,
               onChanged: (final value) {
                 setState(() {
-                  _toggle = !value;
+                  _toggle2 = !value;
                 });
               },
+            ),
+            DsfrToggleSwitch(
+              label: 'Vos favoris',
+              enabled: false,
+              value: false,
+            ),
+            DsfrToggleSwitch(
+              label: 'Vos favoris',
+              enabled: false,
+              value: true,
             ),
           ],
         ),
