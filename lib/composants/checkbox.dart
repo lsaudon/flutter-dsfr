@@ -1,5 +1,6 @@
 import 'package:flutter_dsfr/atoms/focus_widget.dart';
 import 'package:flutter_dsfr/composants/checkbox_icon.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,8 @@ class DsfrCheckbox extends StatelessWidget {
     required this.onChanged,
     required this.padding,
     this.focusNode,
-  }) : isEnabled = onChanged != null;
+    this.enabled = true,
+  });
 
   const DsfrCheckbox.sm({
     required final String label,
@@ -21,6 +23,7 @@ class DsfrCheckbox extends StatelessWidget {
     required final ValueChanged<bool>? onChanged,
     final FocusNode? focusNode,
     final Key? key,
+    final enabled = true,
   }) : this._(
           key: key,
           label: label,
@@ -28,6 +31,7 @@ class DsfrCheckbox extends StatelessWidget {
           onChanged: onChanged,
           padding: EdgeInsets.zero,
           focusNode: focusNode,
+          enabled: enabled,
         );
 
   const DsfrCheckbox.md({
@@ -36,6 +40,7 @@ class DsfrCheckbox extends StatelessWidget {
     final ValueChanged<bool>? onChanged,
     final FocusNode? focusNode,
     final Key? key,
+    enabled = true,
   }) : this._(
           key: key,
           label: label,
@@ -43,6 +48,7 @@ class DsfrCheckbox extends StatelessWidget {
           onChanged: onChanged,
           padding: const EdgeInsets.all(DsfrSpacings.s1v),
           focusNode: focusNode,
+          enabled: enabled,
         );
 
   final String label;
@@ -50,16 +56,16 @@ class DsfrCheckbox extends StatelessWidget {
   final ValueChanged<bool>? onChanged;
   final EdgeInsets padding;
   final FocusNode? focusNode;
-  final bool isEnabled;
+  final bool enabled;
 
   @override
   Widget build(final context) => Semantics(
-        enabled: isEnabled,
+        enabled: enabled,
         checked: value,
         label: label,
         child: ExcludeSemantics(
           child: GestureDetector(
-            onTap: onChanged == null ? null : () => onChanged?.call(!value),
+            onTap: (!enabled || onChanged == null) ? null : () => onChanged?.call(!value),
             behavior: HitTestBehavior.opaque,
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -67,32 +73,35 @@ class DsfrCheckbox extends StatelessWidget {
                 Focus(
                   focusNode: focusNode,
                   onKeyEvent: (final node, final event) {
-                    if (event is KeyDownEvent &&
-                        event.logicalKey == LogicalKeyboardKey.space) {
+                    if (event is KeyDownEvent && event.logicalKey == LogicalKeyboardKey.space) {
                       onChanged?.call(!value);
-
                       return KeyEventResult.handled;
                     }
-
                     return KeyEventResult.ignored;
                   },
-                  canRequestFocus: isEnabled,
+                  canRequestFocus: enabled,
                   child: Builder(
                     builder: (final context) {
                       final isFocused = Focus.of(context).hasFocus;
 
                       return DsfrFocusWidget(
                         isFocused: isFocused,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(4)),
-                        child: DsfrCheckboxIcon(value: value, padding: padding),
+                        borderRadius: const BorderRadius.all(Radius.circular(4)),
+                        child: DsfrCheckboxIcon(value: value, padding: padding, enabled: enabled),
                       );
                     },
                   ),
                 ),
                 const SizedBox(width: DsfrSpacings.s1w),
                 Flexible(
-                  child: Text(label, style: const DsfrTextStyle.bodyMd()),
+                  child: Text(
+                    label,
+                    style: DsfrTextStyle.bodyMd(
+                      color: enabled
+                          ? DsfrColorDecisions.textLabelGrey(context)
+                          : DsfrColorDecisions.textDisabledGrey(context),
+                    ),
+                  ),
                 ),
               ],
             ),

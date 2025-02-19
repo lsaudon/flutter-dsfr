@@ -16,23 +16,43 @@ class CheckboxPage extends StatefulWidget {
 
 class _CheckboxPageState extends State<CheckboxPage> {
   bool _value = false;
+  bool _value2 = false;
 
   @override
   Widget build(final context) => ListView(
         padding: const EdgeInsets.all(16),
         children: [
           DsfrCheckbox.sm(
-            label: 'Label',
+            label: 'small size',
             value: _value,
             onChanged: (final value) => setState(() {
               _value = value;
             }),
           ),
-          const DsfrCheckbox.sm(label: 'Label', value: false, onChanged: null),
-          DsfrCheckbox.sm(
-            label: 'Label',
+          const DsfrCheckbox.sm(
+            label: 'état désactivé non coché',
+            value: false,
+            onChanged: null,
+            enabled: false,
+          ),
+          const DsfrCheckbox.sm(
+            label: 'état désactivé coché',
+            value: true,
+            onChanged: null,
+            enabled: false,
+          ),
+          DsfrCheckbox.md(
+            label: 'medium size',
+            value: _value2,
+            onChanged: (final value) => setState(() {
+              _value2 = value;
+            }),
+          ),
+          DsfrCheckbox.md(
+            label: 'medium size désactivé',
             value: true,
             onChanged: (final value) {},
+            enabled: false,
           ),
         ],
       );
