@@ -1,6 +1,7 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 class LinksPage extends StatelessWidget {
   const LinksPage({super.key});
@@ -14,25 +15,37 @@ class LinksPage extends StatelessWidget {
 
   @override
   Widget build(final context) {
-    const label = 'Label lien';
-    const gap = SizedBox(height: 16);
+    const label = 'Label lien taille MD';
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 16,
         children: [
-          const DsfrLink.md(label: label),
-          gap,
-          DsfrLink.md(label: label, onTap: _handleTap),
-          gap,
-          DsfrLink.md(
+          DsfrLink(
+            label: 'lien taille SM',
+            onTap: _handleTap,
+            size: DsfrComponentSize.sm,
+          ),
+          DsfrLink(
+            label: label,
+            onTap: _handleTap,
+            size: DsfrComponentSize.md,
+          ),
+          DsfrLink(
+            label: 'lien taille LG',
+            onTap: _handleTap,
+            size: DsfrComponentSize.lg,
+          ),
+          const DsfrLink(label: 'lien désactivé (MD)'),
+          DsfrLink(label: label, onTap: _handleTap),
+          DsfrLink(
             label: label,
             icon: DsfrIcons.systemArrowLeftLine,
             onTap: _handleTap,
           ),
-          gap,
-          DsfrLink.md(
+          DsfrLink(
             label: label,
             icon: DsfrIcons.systemArrowLeftLine,
             iconPosition: DsfrLinkIconPosition.end,
