@@ -2,7 +2,7 @@
 
 import 'package:flutter_dsfr/composants/checkbox.dart';
 import 'package:flutter_dsfr/composants/input_headless.dart';
-import 'package:flutter_dsfr/fondamentaux/colors.g.dart';
+import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
@@ -20,11 +20,12 @@ class DsfrInput extends StatefulWidget {
     this.onFieldSubmitted,
     this.validator,
     this.width,
-    this.labelStyle = const DsfrTextStyle.bodyMd(),
-    this.labelColor = DsfrColors.grey50,
+    this.labelColor,
     this.hintStyle = const DsfrTextStyle.bodyXs(),
-    this.hintColor = DsfrColors.grey425,
+    this.hintColor,
+    this.inputColor,
     this.textAlign = TextAlign.start,
+    this.enabled = true,
     this.autofocus = false,
     this.isPasswordMode = false,
     this.autocorrect,
@@ -46,11 +47,12 @@ class DsfrInput extends StatefulWidget {
   final FormFieldValidator<String>? validator;
 
   final double? width;
-  final TextStyle labelStyle;
-  final Color labelColor;
+  final Color? labelColor;
   final TextStyle hintStyle;
-  final Color hintColor;
+  final Color? hintColor;
+  final Color? inputColor;
   final TextAlign textAlign;
+  final bool enabled;
   final bool autofocus;
   final bool isPasswordMode;
   final bool? autocorrect;
@@ -77,7 +79,9 @@ class _DsfrInputState extends State<DsfrInput> {
     Widget label = ExcludeSemantics(
       child: Text(
         labelText,
-        style: widget.labelStyle.copyWith(color: widget.labelColor),
+        style: widget.enabled
+            ? DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textLabelGrey(context))
+            : DsfrTextStyle.bodyMd(color: DsfrColorDecisions.textDisabledGrey(context)),
       ),
     );
 
@@ -93,6 +97,7 @@ class _DsfrInputState extends State<DsfrInput> {
                 label: 'Afficher',
                 value: _passwordVisibility,
                 onChanged: _handlePasswordVisibility,
+                enabled: widget.enabled,
               ),
             ),
         ],
@@ -114,7 +119,9 @@ class _DsfrInputState extends State<DsfrInput> {
               ExcludeSemantics(
                 child: Text(
                   widget.hintText!,
-                  style: widget.hintStyle.copyWith(color: widget.hintColor),
+                  style: widget.enabled
+                      ? (widget.hintStyle.copyWith(color: widget.hintColor ?? DsfrColorDecisions.textMentionGrey(context)))
+                      : widget.hintStyle.copyWith(color: DsfrColorDecisions.textDisabledGrey(context)),
                 ),
               ),
             ],
@@ -139,7 +146,9 @@ class _DsfrInputState extends State<DsfrInput> {
                   passwordVisibility: _passwordVisibility,
                   autocorrect: widget.autocorrect,
                   textAlign: widget.textAlign,
+                  enabled: widget.enabled,
                   autofocus: widget.autofocus,
+                  inputColor: widget.inputColor,
                   inputFormatters: widget.inputFormatters,
                   scrollPadding: widget.scrollPadding,
                   autofillHints: widget.autofillHints,
