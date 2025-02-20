@@ -5,11 +5,17 @@ import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 
+enum DsfrToggleLabelLocation {
+  left,
+  right,
+}
+
 class DsfrToggleSwitch extends StatefulWidget {
   const DsfrToggleSwitch({
     super.key,
     required this.label,
     required this.value,
+    this.labelLocation = DsfrToggleLabelLocation.right,
     this.enabled = true,
     this.onChanged,
   });
@@ -17,6 +23,7 @@ class DsfrToggleSwitch extends StatefulWidget {
   final String label;
   final bool value;
   final bool enabled;
+  final DsfrToggleLabelLocation labelLocation;
   final ValueChanged<bool>? onChanged;
 
   @override
@@ -29,6 +36,19 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
     final textColor = widget.enabled
         ? DsfrColorDecisions.textLabelGrey(context) //
         : DsfrColorDecisions.textDisabledGrey(context);
+    final rowChildren = [
+      DsfrFocusWidget(
+        isFocused: isFocused,
+        borderRadius: const BorderRadius.all(Radius.circular(24)),
+        child: _Switch(value: widget.value, enabled: widget.enabled),
+      ),
+      Expanded(
+        child: Text(
+          widget.label,
+          style: DsfrTextStyle.bodyMd(color: textColor),
+        ),
+      ),
+    ];
     return Semantics(
       toggled: widget.value,
       child: InkWell(
@@ -42,19 +62,7 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         onFocusChange: updateMaterialState(WidgetState.focused),
         child: Row(
           spacing: DsfrSpacings.s2w,
-          children: [
-            DsfrFocusWidget(
-              isFocused: isFocused,
-              borderRadius: const BorderRadius.all(Radius.circular(24)),
-              child: _Switch(value: widget.value, enabled: widget.enabled),
-            ),
-            Flexible(
-              child: Text(
-                widget.label,
-                style: DsfrTextStyle.bodyMd(color: textColor),
-              ),
-            ),
-          ],
+          children: widget.labelLocation == DsfrToggleLabelLocation.left ? rowChildren.reversed.toList() : rowChildren,
         ),
       ),
     );
