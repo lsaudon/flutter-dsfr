@@ -4,10 +4,6 @@ Ce repository contient une implémentation Flutter du Système de Design de l'É
 
 ## Installation
 
-### Récupération des polices
-
-Vous devez récupérer les polices Marianne et les mettre dans le dossier `lib/assets/fonts`. Les fonts nécessaires sont visibles dans le fichier `pubspec.yaml`.
-
 ### Gestion du thème
 
 Le Design Système gère deux thèmes : un thème clair et un sombre. Il faut cependant indiquer à la librairie dans quel thème elle doit dessiner ses widgets.
@@ -34,6 +30,10 @@ Widget build(final context) {
 ```
 
 ## Contribution
+
+### Flutter
+
+Ce projet nécessite d'avoir installé Flutter sur son poste. La version actuelle est précisée dans le fichier `mise.toml`.
 
 ### Conventions
 
