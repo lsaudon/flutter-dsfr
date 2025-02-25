@@ -17,18 +17,37 @@ class TagsPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 16,
           children: [
-            DsfrTag(
-              label: TextSpan(text: 'small tag'),
+            Text(
+              'Taille SM',
             ),
-            DsfrTag(
-              label: TextSpan(text: 'small tag'),
-              icon: DsfrIcons.financeMoneyEuroCircleLine,
+            DsfrTag.sm(
+              label: TextSpan(text: 'Libellé tag'),
             ),
-            DsfrTag(
-              label: TextSpan(text: 'tag custom'),
+            DsfrTag.sm(
+              label: TextSpan(text: 'Libellé tag'),
+              icon: DsfrIcons.systemArrowRightLine,
+            ),
+            DsfrTag.sm(
+              label: TextSpan(text: 'Libellé tag personnalisé'),
               backgroundColor: DsfrColors.greenMenthe925,
               textColor: DsfrColors.greenMentheSun373,
-              icon: DsfrIcons.financeMoneyEuroCircleLine,
+              icon: DsfrIcons.systemArrowRightLine,
+            ),
+            Text(
+              'Taille MD',
+            ),
+            DsfrTag.md(
+              label: TextSpan(text: 'Libellé tag'),
+            ),
+            DsfrTag.md(
+              label: TextSpan(text: 'Libellé tag'),
+              icon: DsfrIcons.systemArrowRightLine,
+            ),
+            DsfrTag.md(
+              label: TextSpan(text: 'Libellé tag personnalisé'),
+              backgroundColor: DsfrColors.greenMenthe925,
+              textColor: DsfrColors.greenMentheSun373,
+              icon: DsfrIcons.systemArrowRightLine,
             ),
           ],
         ),
