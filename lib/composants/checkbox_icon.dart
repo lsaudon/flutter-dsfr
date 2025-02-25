@@ -60,6 +60,8 @@ class DsfrCheckboxIcon extends StatelessWidget {
         return DsfrColorDecisions.borderPlainSuccess(context);
       case ComposantStateEnum.info:
         return DsfrColorDecisions.borderPlainInfo(context);
+      case ComposantStateEnum.warning:
+        return DsfrColorDecisions.borderPlainWarning(context);
       case ComposantStateEnum.none:
         return backgroundColor;
     }
