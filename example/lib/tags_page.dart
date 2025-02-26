@@ -29,8 +29,9 @@ class TagsPage extends StatelessWidget {
             ),
             DsfrTag.sm(
               label: TextSpan(text: 'Libellé tag personnalisé'),
-              backgroundColor: DsfrColors.greenMenthe925,
-              textColor: DsfrColors.greenMentheSun373,
+              backgroundColor:
+                  DsfrColorDecisions.backgroundFlatSuccess(context),
+              textColor: DsfrColorDecisions.textLabelGrey(context),
               icon: DsfrIcons.systemArrowRightLine,
             ),
             Text(
@@ -45,8 +46,9 @@ class TagsPage extends StatelessWidget {
             ),
             DsfrTag.md(
               label: TextSpan(text: 'Libellé tag personnalisé'),
-              backgroundColor: DsfrColors.greenMenthe925,
-              textColor: DsfrColors.greenMentheSun373,
+              backgroundColor:
+                  DsfrColorDecisions.backgroundFlatSuccess(context),
+              textColor: DsfrColorDecisions.textLabelGrey(context),
               icon: DsfrIcons.systemArrowRightLine,
             ),
           ],
