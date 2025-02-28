@@ -16,3 +16,18 @@ Color getTextColor(BuildContext context, DsfrComposantStateEnum composantStateEn
       return DsfrColorDecisions.textDefaultGrey(context);
   }
 }
+
+Color getBorderColor(BuildContext context, DsfrComposantStateEnum composantStateEnum, {Color? defaultColor}) {
+  switch (composantStateEnum) {
+    case DsfrComposantStateEnum.error:
+      return DsfrColorDecisions.borderPlainError(context);
+    case DsfrComposantStateEnum.success:
+      return DsfrColorDecisions.borderPlainSuccess(context);
+    case DsfrComposantStateEnum.info:
+      return DsfrColorDecisions.borderPlainInfo(context);
+    case DsfrComposantStateEnum.warning:
+      return DsfrColorDecisions.borderPlainWarning(context);
+    case DsfrComposantStateEnum.none:
+      return defaultColor ?? DsfrColorDecisions.borderPlainGrey(context);
+  }
+}
