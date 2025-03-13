@@ -2,6 +2,9 @@ import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
 
+import 'mise_en_page/page_section.dart';
+import 'mise_en_page/page_sub_section.dart';
+
 class TogglesPage extends StatefulWidget {
   const TogglesPage({super.key});
 
@@ -23,161 +26,265 @@ class _TogglesPageState extends State<TogglesPage> {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
-        spacing: 16,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 38,
         children: [
-          Text('Etats', style: DsfrTextStyle.headline3(color: DsfrColorDecisions.textTitleBlueFrance(context))),
-          Text('Label à gauche',
-              style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleBlueFrance(context))),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            labelLocation: DsfrToggleLabelLocation.left,
-            value: _toggleLeft,
-            onChanged: (final value) {
-              setState(() {
-                _toggleLeft = value;
-              });
-            },
+          PageSection(
+            title: 'Etats',
+            children: [
+              PageSubSection(
+                title: 'Label à gauche',
+                children: [
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    labelLocation: DsfrToggleLabelLocation.left,
+                    value: _toggleLeft,
+                    onChanged: (final value) {
+                      setState(() {
+                        _toggleLeft = value;
+                      });
+                    },
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    labelLocation: DsfrToggleLabelLocation.left,
+                    value: !_toggleRight,
+                    onChanged: (final value) {
+                      setState(() {
+                        _toggleRight = !value;
+                      });
+                    },
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    labelLocation: DsfrToggleLabelLocation.left,
+                    enabled: false,
+                    value: false,
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    labelLocation: DsfrToggleLabelLocation.left,
+                    enabled: false,
+                    value: true,
+                  ),
+                ],
+              ),
+              PageSubSection(
+                title: 'Label à droite',
+                children: [
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    value: _toggleLeft,
+                    onChanged: (final value) {
+                      setState(() {
+                        _toggleLeft = value;
+                      });
+                    },
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    value: !_toggleRight,
+                    onChanged: (final value) {
+                      setState(() {
+                        _toggleRight = !value;
+                      });
+                    },
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    enabled: false,
+                    value: false,
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    enabled: false,
+                    value: true,
+                  ),
+                ],
+              ),
+            ],
           ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            labelLocation: DsfrToggleLabelLocation.left,
-            value: !_toggleRight,
-            onChanged: (final value) {
-              setState(() {
-                _toggleRight = !value;
-              });
-            },
+          PageSection(
+            title: 'Avec description',
+            children: [
+              PageSubSection(title: 'Label à gauche', children: [
+                DsfrToggleSwitch(
+                  label: 'Libellé de l\'interrupteur',
+                  description: 'Texte de description additionnel',
+                  labelLocation: DsfrToggleLabelLocation.left,
+                  value: _toggleLeft,
+                  onChanged: (final value) {
+                    setState(() {
+                      _toggleLeft = value;
+                    });
+                  },
+                ),
+                DsfrToggleSwitch(
+                  label: 'Libellé de l\'interrupteur',
+                  description: 'Texte de description additionnel',
+                  labelLocation: DsfrToggleLabelLocation.left,
+                  value: !_toggleRight,
+                  onChanged: (final value) {
+                    setState(() {
+                      _toggleRight = !value;
+                    });
+                  },
+                ),
+                DsfrToggleSwitch(
+                  label: 'Libellé de l\'interrupteur',
+                  description: 'Texte de description additionnel',
+                  labelLocation: DsfrToggleLabelLocation.left,
+                  enabled: false,
+                  value: false,
+                ),
+                DsfrToggleSwitch(
+                  label: 'Libellé de l\'interrupteur',
+                  description: 'Texte de description additionnel',
+                  labelLocation: DsfrToggleLabelLocation.left,
+                  enabled: false,
+                  value: true,
+                ),
+              ]),
+              PageSubSection(
+                title: 'Label à droite',
+                children: [
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    description: 'Texte de description additionnel',
+                    value: _toggleLeft,
+                    onChanged: (final value) {
+                      setState(() {
+                        _toggleLeft = value;
+                      });
+                    },
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    description: 'Texte de description additionnel',
+                    value: !_toggleRight,
+                    onChanged: (final value) {
+                      setState(() {
+                        _toggleRight = !value;
+                      });
+                    },
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    description: 'Texte de description additionnel',
+                    enabled: false,
+                    value: false,
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    description: 'Texte de description additionnel',
+                    enabled: false,
+                    value: true,
+                  ),
+                ],
+              )
+            ],
           ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            labelLocation: DsfrToggleLabelLocation.left,
-            enabled: false,
-            value: false,
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            labelLocation: DsfrToggleLabelLocation.left,
-            enabled: false,
-            value: true,
-          ),
-          Text('Label à droite',
-              style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleBlueFrance(context))),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            value: _toggleLeft,
-            onChanged: (final value) {
-              setState(() {
-                _toggleLeft = value;
-              });
-            },
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            value: !_toggleRight,
-            onChanged: (final value) {
-              setState(() {
-                _toggleRight = !value;
-              });
-            },
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            enabled: false,
-            value: false,
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            enabled: false,
-            value: true,
-          ),
-          Text(
-            'Avec description',
-            style: DsfrTextStyle.headline4(
-              color: DsfrColorDecisions.textTitleBlueFrance(context),
-            ),
-          ),
-          Text(
-            'Label à gauche',
-            style: DsfrTextStyle.headline5(
-              color: DsfrColorDecisions.textTitleBlueFrance(context),
-            ),
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            description: 'Texte de description additionnel',
-            labelLocation: DsfrToggleLabelLocation.left,
-            value: _toggleLeft,
-            onChanged: (final value) {
-              setState(() {
-                _toggleLeft = value;
-              });
-            },
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            description: 'Texte de description additionnel',
-            labelLocation: DsfrToggleLabelLocation.left,
-            value: !_toggleRight,
-            onChanged: (final value) {
-              setState(() {
-                _toggleRight = !value;
-              });
-            },
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            description: 'Texte de description additionnel',
-            labelLocation: DsfrToggleLabelLocation.left,
-            enabled: false,
-            value: false,
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            description: 'Texte de description additionnel',
-            labelLocation: DsfrToggleLabelLocation.left,
-            enabled: false,
-            value: true,
-          ),
-          Text('Label à droite',
-              style: DsfrTextStyle.headline5(color: DsfrColorDecisions.textTitleBlueFrance(context))),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            description: 'Texte de description additionnel',
-            value: _toggleLeft,
-            onChanged: (final value) {
-              setState(() {
-                _toggleLeft = value;
-              });
-            },
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            description: 'Texte de description additionnel',
-            value: !_toggleRight,
-            onChanged: (final value) {
-              setState(() {
-                _toggleRight = !value;
-              });
-            },
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            description: 'Texte de description additionnel',
-            enabled: false,
-            value: false,
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            description: 'Texte de description additionnel',
-            enabled: false,
-            value: true,
-          ),
-          DsfrToggleSwitch(
-            label: 'Libellé de l\'interrupteur',
-            description: 'Texte de description additionnel',
-            enabled: false,
-            value: true,
+          PageSection(
+            title: 'Avec statut',
+            children: [
+              PageSubSection(title: 'Label à gauche', children: [
+                DsfrToggleSwitch(
+                  label: 'Libellé de l\'interrupteur',
+                  status: _toggleLeft ? 'Activé' : 'Désactivé',
+                  labelLocation: DsfrToggleLabelLocation.left,
+                  value: _toggleLeft,
+                  onChanged: (final value) {
+                    setState(() {
+                      _toggleLeft = value;
+                    });
+                  },
+                ),
+                DsfrToggleSwitch(
+                  label: 'Libellé de l\'interrupteur',
+                  status: !_toggleRight ? 'Activé' : 'Désactivé',
+                  labelLocation: DsfrToggleLabelLocation.left,
+                  value: !_toggleRight,
+                  onChanged: (final value) {
+                    setState(() {
+                      _toggleRight = !value;
+                    });
+                  },
+                ),
+                DsfrToggleSwitch(
+                  label: 'Libellé de l\'interrupteur',
+                  status: 'Désactivé',
+                  labelLocation: DsfrToggleLabelLocation.left,
+                  enabled: false,
+                  value: false,
+                ),
+                DsfrToggleSwitch(
+                  label: 'Libellé de l\'interrupteur',
+                  status: 'Désactivé',
+                  labelLocation: DsfrToggleLabelLocation.left,
+                  enabled: false,
+                  value: true,
+                ),
+                DsfrToggleSwitch(
+                  label: 'Libellé de l\'interrupteur',
+                  description: 'Texte de description additionnel',
+                  status: _toggleLeft ? 'Activé' : 'Désactivé',
+                  labelLocation: DsfrToggleLabelLocation.left,
+                  value: _toggleLeft,
+                  onChanged: (final value) {
+                    setState(() {
+                      _toggleLeft = value;
+                    });
+                  },
+                ),
+              ]),
+              PageSubSection(
+                title: 'Label à droite',
+                children: [
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    status: _toggleLeft ? 'Activé' : 'Désactivé',
+                    value: _toggleLeft,
+                    onChanged: (final value) {
+                      setState(() {
+                        _toggleLeft = value;
+                      });
+                    },
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    status: !_toggleRight ? 'Activé' : 'Désactivé',
+                    value: !_toggleRight,
+                    onChanged: (final value) {
+                      setState(() {
+                        _toggleRight = !value;
+                      });
+                    },
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    status: 'Désactivé',
+                    enabled: false,
+                    value: false,
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    status: 'Désactivé',
+                    enabled: false,
+                    value: true,
+                  ),
+                  DsfrToggleSwitch(
+                    label: 'Libellé de l\'interrupteur',
+                    description: 'Texte de description additionnel',
+                    status: _toggleLeft ? 'Activé' : 'Désactivé',
+                    value: _toggleLeft,
+                    onChanged: (final value) {
+                      setState(() {
+                        _toggleLeft = value;
+                      });
+                    },
+                  ),
+                ],
+              )
+            ],
           ),
         ],
       ),

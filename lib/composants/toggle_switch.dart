@@ -19,6 +19,7 @@ class DsfrToggleSwitch extends StatefulWidget {
     this.enabled = true,
     this.onChanged,
     this.description,
+    this.status,
   });
 
   final String label;
@@ -27,6 +28,7 @@ class DsfrToggleSwitch extends StatefulWidget {
   final DsfrToggleLabelLocation labelLocation;
   final ValueChanged<bool>? onChanged;
   final String? description;
+  final String? status;
 
   @override
   State<DsfrToggleSwitch> createState() => _DsfrToggleSwitchState();
@@ -57,10 +59,25 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         spacing: DsfrSpacings.s2w,
         children: widget.labelLocation == DsfrToggleLabelLocation.left ? rowChildren.reversed.toList() : rowChildren,
       ),
+      if (widget.status != null)
+        Align(
+          alignment: widget.labelLocation == DsfrToggleLabelLocation.left ? Alignment.centerRight : Alignment.centerLeft,
+          child: Text(
+            widget.status!,
+            style: DsfrTextStyle.bodyXs(
+              color: widget.enabled
+                  ? DsfrColorDecisions.textActiveBlueFrance(context)
+                  : DsfrColorDecisions.textDisabledGrey(context),
+            ),
+          ),
+        ),
       if (widget.description != null)
-        Text(
-          widget.description!,
-          style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),
+        Padding(
+          padding: const EdgeInsets.only(top: DsfrSpacings.s2w),
+          child: Text(
+            widget.description!,
+            style: DsfrTextStyle.bodyXs(color: DsfrColorDecisions.textMentionGrey(context)),
+          ),
         ),
     ];
     return Semantics(
@@ -75,7 +92,6 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         excludeFromSemantics: true,
         onFocusChange: updateMaterialState(WidgetState.focused),
         child: Column(
-          spacing: DsfrSpacings.s2w,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: columnChildren,
         ),
