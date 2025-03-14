@@ -128,7 +128,7 @@ class _RadiosPageState extends State<RadiosPage> {
             title: 'Radios riches en erreur',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
-            composantState: DsfrComposantState.success(message: 'Texte d\'erreur obligatoire'),
+            composantState: DsfrComposantState.error(errorMessage: 'Texte d\'erreur obligatoire'),
           ),
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioRichButtonSet(
