@@ -4,6 +4,7 @@ import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/color_utils.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 
 enum DsfrToggleLabelLocation {
@@ -40,12 +41,8 @@ class DsfrToggleSwitch extends StatefulWidget {
 class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateMixin<DsfrToggleSwitch> {
   @override
   Widget build(final context) {
-    final textColor = switch ((widget.enabled, widget.composantState)) {
-      (false, _) => DsfrColorDecisions.textDisabledGrey(context),
-      (true, DsfrComposantStateEnum.error) => DsfrColorDecisions.textDefaultError(context),
-      (true, DsfrComposantStateEnum.success) => DsfrColorDecisions.textDefaultSuccess(context),
-      _ => DsfrColorDecisions.textLabelGrey(context)
-    };
+    final textColor =
+        widget.enabled ? getTextColor(context, widget.composantState) : DsfrColorDecisions.textDisabledGrey(context);
     final statusTextColor = switch ((widget.enabled, widget.composantState)) {
       (false, _) => DsfrColorDecisions.textDisabledGrey(context),
       (true, DsfrComposantStateEnum.error) => DsfrColorDecisions.textDefaultError(context),
@@ -133,12 +130,9 @@ class _Switch extends StatelessWidget {
     const height = 24.0;
     const offset = width - height;
 
-    final borderColor = switch ((composantState, enabled)) {
-      (_, false) => DsfrColorDecisions.borderDisabledGrey(context),
-      (DsfrComposantStateEnum.error, true) => DsfrColorDecisions.borderPlainError(context),
-      (DsfrComposantStateEnum.success, true) => DsfrColorDecisions.borderPlainSuccess(context),
-      _ => DsfrColorDecisions.borderActionHighBlueFrance(context),
-    };
+    final borderColor = enabled
+        ? getBorderColor(context, composantState, defaultColor: DsfrColorDecisions.borderActionHighBlueFrance(context))
+        : DsfrColorDecisions.borderDisabledGrey(context);
 
     final backgroundColor = switch ((value, enabled)) {
       (false, true) => DsfrColorDecisions.backgroundDefaultGrey(context),
