@@ -9,29 +9,50 @@ class RadioIcon<T> extends StatelessWidget {
     required this.groupValue,
     this.enabled = true,
     this.state = DsfrComposantStateEnum.none,
+    this.outerDiameter = 24.0,
+    this.innerDiameter = 12.0,
   });
 
   final T value;
   final T? groupValue;
   final bool enabled;
   final DsfrComposantStateEnum state;
+  final double outerDiameter;
+  final double innerDiameter;
 
   @override
-  Widget build(final context) => Semantics(
-        checked: groupValue == value,
-        selected: groupValue == value,
-        inMutuallyExclusiveGroup: true,
-        child: FittedBox(
-          child: CustomPaint(
-            painter: _RadioIconPainter(
-              isSelected: groupValue == value,
-              strokeColor: getStrokeColor(context),
-              fillColor: getFillColor(context),
+  Widget build(final context) {
+    final isSelected = groupValue == value;
+    return Semantics(
+      checked: isSelected,
+      selected: isSelected,
+      inMutuallyExclusiveGroup: true,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            width: outerDiameter,
+            height: outerDiameter,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: getStrokeColor(context),
+              ),
+              borderRadius: BorderRadius.circular(outerDiameter),
             ),
-            size: const Size(24, 24),
           ),
-        ),
-      );
+          AnimatedContainer(
+            width: isSelected ? innerDiameter : 0,
+            height: isSelected ? innerDiameter : 0,
+            duration: Duration(milliseconds: 200),
+            decoration: BoxDecoration(
+              color: getFillColor(context),
+              borderRadius: BorderRadius.circular(innerDiameter),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Color getFillColor(BuildContext context) {
     if (!enabled) {
@@ -52,37 +73,4 @@ class RadioIcon<T> extends StatelessWidget {
       return getFillColor(context);
     }
   }
-}
-
-class _RadioIconPainter extends CustomPainter {
-  final bool isSelected;
-  final Color strokeColor;
-  final Color fillColor;
-  static const outerRadius = 11.0;
-  static const innerRadius = 6.0;
-
-  const _RadioIconPainter({required this.isSelected, required this.strokeColor, required this.fillColor});
-
-  @override
-  void paint(final Canvas canvas, final Size size) {
-    final center = size.center(Offset.zero);
-    final outerPaint = Paint()
-      ..color = strokeColor
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1;
-
-    canvas.drawCircle(center, outerRadius, outerPaint);
-
-    if (isSelected) {
-      final innerPaint = Paint()
-        ..color = fillColor
-        ..style = PaintingStyle.fill
-        ..strokeWidth = 1;
-
-      canvas.drawCircle(center, innerRadius, innerPaint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(final _RadioIconPainter oldDelegate) => isSelected != oldDelegate.isSelected;
 }
