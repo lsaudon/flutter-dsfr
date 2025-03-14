@@ -162,30 +162,28 @@ class _Switch extends StatelessWidget {
               borderRadius: borderRadius,
             ),
           ),
-          Positioned(
+          AnimatedPositioned(
+            curve: Curves.easeInOut,
             left: value ? offset : 0,
             top: 0,
             right: value ? 0 : offset,
             bottom: 0,
-            child: value
-                ? DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: circleBackgroundColor,
-                      border: border,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      DsfrIcons.systemCheckLine,
-                      size: 16,
-                      color: iconColor,
-                    ),
-                  )
-                : DecoratedBox(
-                    decoration: BoxDecoration(
-                      border: border,
-                      borderRadius: borderRadius,
-                    ),
-                  ),
+            duration: Duration(milliseconds: 250),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: circleBackgroundColor,
+                border: border,
+                shape: BoxShape.circle,
+              ),
+              child: Visibility(
+                visible: value,
+                child: Icon(
+                  DsfrIcons.systemCheckLine,
+                  size: 16,
+                  color: iconColor,
+                ),
+              ),
+            ),
           ),
         ],
       ),
