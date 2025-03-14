@@ -14,20 +14,16 @@ class DsfrRadioRichButton<T> extends StatefulWidget {
     required this.value,
     required this.groupValue,
     required this.onChanged,
-    this.description,
     this.enabled = true,
     this.state = DsfrComposantStateEnum.none,
-    this.trailingIcon,
   });
 
   final String title;
-  final String? description;
   final T value;
   final T? groupValue;
   final ValueChanged<T?>? onChanged;
   final bool enabled;
   final DsfrComposantStateEnum state;
-  final Widget? trailingIcon;
 
   @override
   State<DsfrRadioRichButton<T>> createState() => _DsfrRadioRichButtonState<T>();
@@ -55,59 +51,25 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                   ),
                 ),
               ),
-              child: IntrinsicHeight(
+              child: Padding(
+                padding: const EdgeInsets.all(DsfrSpacings.s2w),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(DsfrSpacings.s2w),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          RadioIcon(
-                            key: ValueKey(widget.title),
-                            value: widget.value,
-                            groupValue: widget.groupValue,
-                            enabled: widget.enabled,
-                            state: widget.state,
-                            innerDiameter: 8.0,
-                            outerDiameter: 16.0,
-                          ),
-                          const SizedBox(width: DsfrSpacings.s1w),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            spacing: DsfrSpacings.s1v,
-                            children: [
-                              Text(
-                                widget.title,
-                                style: DsfrTextStyle.bodyMd(color: getLabelColor(context)),
-                              ),
-                              if (widget.description != null)
-                                Text(
-                                  widget.description!,
-                                  style: DsfrTextStyle.bodyXs(color: getDescriptionColor(context)),
-                                ),
-                            ],
-                          ),
-                        ],
+                    RadioIcon(
+                      key: ValueKey(widget.title),
+                      value: widget.value,
+                      groupValue: widget.groupValue,
+                      enabled: widget.enabled,
+                      state: widget.state,
+                    ),
+                    const SizedBox(width: DsfrSpacings.s1w),
+                    Flexible(
+                      child: Text(
+                        widget.title,
+                        style: DsfrTextStyle.bodyMd(color: getLabelColor(context)),
                       ),
                     ),
-                    if (widget.trailingIcon != null) ...[
-                      Spacer(),
-                      VerticalDivider(
-                        width: 0,
-                        indent: DsfrSpacings.s1v,
-                        endIndent: DsfrSpacings.s1v,
-                      ),
-                      SizedBox(
-                        width: 88,
-                        height: 88,
-                        child: Center(
-                          child: widget.trailingIcon!,
-                        ),
-                      )
-                    ]
                   ],
                 ),
               ),
@@ -127,14 +89,6 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
       return DsfrColorDecisions.textDisabledGrey(context);
     } else {
       return getTextColor(context, widget.state, defaultColor: DsfrColorDecisions.textLabelGrey(context));
-    }
-  }
-
-  Color getDescriptionColor(BuildContext context) {
-    if (!widget.enabled) {
-      return DsfrColorDecisions.textDisabledGrey(context);
-    } else {
-      return getTextColor(context, widget.state, defaultColor: DsfrColorDecisions.textMentionGrey(context));
     }
   }
 }

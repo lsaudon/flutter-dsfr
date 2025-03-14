@@ -20,7 +20,7 @@ class _RadiosPageState extends State<RadiosPage> {
 
   @override
   Widget build(final context) => ListView(
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 98),
+        padding: const EdgeInsets.all(16),
         children: [
           DsfrRadioRichButtonSet(
             title: 'Radios riches',
@@ -79,49 +79,6 @@ class _RadiosPageState extends State<RadiosPage> {
               }
             },
             enabled: false,
-          ),
-          const SizedBox(height: DsfrSpacings.s1w),
-          DsfrRadioRichButton<int>(
-            title: 'Avec description',
-            description: 'Une description optionnelle',
-            value: 4,
-            groupValue: _value,
-            onChanged: (final value) {
-              if (value != null) {
-                setState(() {
-                  _value = value;
-                });
-              }
-            },
-          ),
-          const SizedBox(height: DsfrSpacings.s1w),
-          DsfrRadioRichButton<int>(
-            title: 'Avec icon',
-            trailingIcon: Icon(Icons.ac_unit_rounded, size: 32),
-            value: 5,
-            groupValue: _value,
-            onChanged: (final value) {
-              if (value != null) {
-                setState(() {
-                  _value = value;
-                });
-              }
-            },
-          ),
-          const SizedBox(height: DsfrSpacings.s1w),
-          DsfrRadioRichButton<int>(
-            title: 'Avec icon et description',
-            description: 'Une description optionnelle',
-            trailingIcon: Icon(Icons.access_alarm_rounded, size: 32),
-            value: 6,
-            groupValue: _value,
-            onChanged: (final value) {
-              if (value != null) {
-                setState(() {
-                  _value = value;
-                });
-              }
-            },
           ),
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioRichButtonSet(
