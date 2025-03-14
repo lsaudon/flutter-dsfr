@@ -4,6 +4,8 @@ import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/helpers/color_utils.dart';
+import 'package:flutter_dsfr/helpers/composant_state.dart';
 
 enum DsfrToggleLabelLocation {
   left,
@@ -20,12 +22,14 @@ class DsfrToggleSwitch extends StatefulWidget {
     this.onChanged,
     this.description,
     this.status,
+    this.composantState = DsfrComposantStateEnum.none,
   });
 
   final String label;
   final bool value;
   final bool enabled;
   final DsfrToggleLabelLocation labelLocation;
+  final DsfrComposantStateEnum composantState;
   final ValueChanged<bool>? onChanged;
   final String? description;
   final String? status;
@@ -38,13 +42,23 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
   @override
   Widget build(final context) {
     final textColor =
-        widget.enabled ? DsfrColorDecisions.textLabelGrey(context) : DsfrColorDecisions.textDisabledGrey(context);
+        widget.enabled ? getTextColor(context, widget.composantState) : DsfrColorDecisions.textDisabledGrey(context);
+    final statusTextColor = switch ((widget.enabled, widget.composantState)) {
+      (false, _) => DsfrColorDecisions.textDisabledGrey(context),
+      (true, DsfrComposantStateEnum.error) => DsfrColorDecisions.textDefaultError(context),
+      (true, DsfrComposantStateEnum.success) => DsfrColorDecisions.textDefaultSuccess(context),
+      _ => DsfrColorDecisions.textActiveBlueFrance(context)
+    };
 
     final rowChildren = [
       DsfrFocusWidget(
         isFocused: isFocused,
         borderRadius: const BorderRadius.all(Radius.circular(24)),
-        child: _Switch(value: widget.value, enabled: widget.enabled),
+        child: _Switch(
+          value: widget.value,
+          enabled: widget.enabled,
+          composantState: widget.composantState,
+        ),
       ),
       Expanded(
         child: Text(
@@ -61,13 +75,12 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
       ),
       if (widget.status != null)
         Align(
-          alignment: widget.labelLocation == DsfrToggleLabelLocation.left ? Alignment.centerRight : Alignment.centerLeft,
+          alignment:
+              widget.labelLocation == DsfrToggleLabelLocation.left ? Alignment.centerRight : Alignment.centerLeft,
           child: Text(
             widget.status!,
             style: DsfrTextStyle.bodyXs(
-              color: widget.enabled
-                  ? DsfrColorDecisions.textActiveBlueFrance(context)
-                  : DsfrColorDecisions.textDisabledGrey(context),
+              color: statusTextColor,
             ),
           ),
         ),
@@ -104,10 +117,12 @@ class _Switch extends StatelessWidget {
   const _Switch({
     required this.value,
     required this.enabled,
+    required this.composantState,
   });
 
   final bool value;
   final bool enabled;
+  final DsfrComposantStateEnum composantState;
 
   @override
   Widget build(final context) {
@@ -116,7 +131,7 @@ class _Switch extends StatelessWidget {
     const offset = width - height;
 
     final borderColor = enabled
-        ? DsfrColorDecisions.borderActionHighBlueFrance(context)
+        ? getBorderColor(context, composantState, defaultColor: DsfrColorDecisions.borderActionHighBlueFrance(context))
         : DsfrColorDecisions.borderDisabledGrey(context);
 
     final backgroundColor = switch ((value, enabled)) {
