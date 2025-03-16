@@ -16,6 +16,7 @@ export 'composants/radios/radio_icon.dart';
 export 'composants/radios/dsfr_radio_rich_button_set.dart';
 export 'composants/radios/dsfr_radio_rich_button_set_headless.dart';
 export 'composants/select.dart';
+export 'composants/slider.dart';
 export 'composants/tag.dart';
 export 'composants/toggle_switch.dart';
 export 'fondamentaux/colors.g.dart';
