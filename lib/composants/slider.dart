@@ -119,15 +119,18 @@ class DsfrSlider extends StatelessWidget {
                   enabled ? DsfrColorDecisions.textMentionGrey(context) : DsfrColorDecisions.textDisabledGrey(context),
             ),
           ),
-        _Slider(
-          value: value,
-          min: min,
-          max: max,
-          divisions: divisions,
-          onChanged: onChanged,
+        _SliderTheme(
           size: size,
           enabled: enabled,
+          value: value,
           valueLabelBuilder: valueLabelBuilder,
+          child: Slider(
+            min: min,
+            max: max,
+            value: value,
+            divisions: divisions,
+            onChanged: enabled ? onChanged : null,
+          ),
         ),
         if (showMinMaxLabels)
           Padding(
@@ -159,24 +162,18 @@ class DsfrSlider extends StatelessWidget {
   }
 }
 
-class _Slider extends StatelessWidget {
-  final double value;
-  final double min;
-  final double max;
-  final int? divisions;
-  final ValueChanged<double>? onChanged;
+class _SliderTheme extends StatelessWidget {
+  final Widget child;
   final DsfrComponentSize size;
   final bool enabled;
+  final double value;
   final String Function(double)? valueLabelBuilder;
 
-  const _Slider({
-    required this.value,
-    required this.min,
-    required this.max,
-    required this.divisions,
+  const _SliderTheme({
+    required this.child,
     required this.size,
-    required this.enabled,
-    this.onChanged,
+    this.enabled = true,
+    required this.value,
     this.valueLabelBuilder,
   });
 
@@ -205,13 +202,7 @@ class _Slider extends StatelessWidget {
         ),
         padding: EdgeInsets.only(top: 22),
       ),
-      child: Slider(
-        min: min,
-        max: max,
-        value: value,
-        divisions: divisions,
-        onChanged: enabled ? onChanged : null,
-      ),
+      child: child,
     );
   }
 
