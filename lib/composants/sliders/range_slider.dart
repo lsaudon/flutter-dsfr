@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/composants/sliders/sliders_utils.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
@@ -133,7 +134,7 @@ class DsfrRangeSlider extends StatelessWidget {
           size: size,
           enabled: enabled,
           labelText:
-              "${(valueLabelBuilder ?? _defaultLabelBuilder)(values.start)} - ${(valueLabelBuilder ?? _defaultLabelBuilder)(values.end)}",
+              "${(valueLabelBuilder ?? defaultLabelBuilder)(values.start)} - ${(valueLabelBuilder ?? defaultLabelBuilder)(values.end)}",
           child: RangeSlider(
             min: min,
             max: max,
@@ -150,7 +151,7 @@ class DsfrRangeSlider extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  (valueLabelBuilder ?? _defaultLabelBuilder)(min),
+                  (valueLabelBuilder ?? defaultLabelBuilder)(min),
                   style: DsfrTextStyle.bodyXs(
                     color: enabled
                         ? DsfrColorDecisions.textMentionGrey(context)
@@ -159,7 +160,7 @@ class DsfrRangeSlider extends StatelessWidget {
                 ),
                 Spacer(),
                 Text(
-                  (valueLabelBuilder ?? _defaultLabelBuilder)(max),
+                  (valueLabelBuilder ?? defaultLabelBuilder)(max),
                   style: DsfrTextStyle.bodyXs(
                     color: enabled
                         ? DsfrColorDecisions.textMentionGrey(context)
@@ -203,10 +204,10 @@ class _RangeSliderTheme extends StatelessWidget {
         disabledActiveTickMarkColor: DsfrColorDecisions.backgroundDefaultGrey(context),
         disabledInactiveTickMarkColor: DsfrColorDecisions.backgroundDisabledGrey(context),
         thumbColor: DsfrColorDecisions.backgroundDefaultGrey(context),
-        trackHeight: _getTrackHeight(),
+        trackHeight: getTrackHeight(size),
         rangeThumbShape: _CustomRangeThumbShape(
           context,
-          thumbRadius: _getTrackHeight(),
+          thumbRadius: getTrackHeight(size),
           enabled: enabled,
         ),
         rangeTrackShape: _CustomRangeTrackShape(context: context, labelText: labelText),
@@ -215,18 +216,6 @@ class _RangeSliderTheme extends StatelessWidget {
       child: child,
     );
   }
-
-  double _getTrackHeight() {
-    return switch (size) {
-      DsfrComponentSize.sm => 8.0,
-      DsfrComponentSize.md => 12.0,
-      _ => throw UnimplementedError('Size $size is not implemented'),
-    };
-  }
-}
-
-String _defaultLabelBuilder(double value) {
-  return (value * 100).toInt().toString();
 }
 
 class _CustomRangeThumbShape extends RoundRangeSliderThumbShape {

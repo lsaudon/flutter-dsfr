@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/composants/sliders/sliders_utils.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
@@ -132,7 +133,7 @@ class DsfrSlider extends StatelessWidget {
         _SliderTheme(
           size: size,
           enabled: enabled,
-          labelText: (valueLabelBuilder ?? _defaultLabelBuilder)(value),
+          labelText: (valueLabelBuilder ?? defaultLabelBuilder)(value),
           child: Slider(
             min: min,
             max: max,
@@ -149,7 +150,7 @@ class DsfrSlider extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  (valueLabelBuilder ?? _defaultLabelBuilder)(min),
+                  (valueLabelBuilder ?? defaultLabelBuilder)(min),
                   style: DsfrTextStyle.bodyXs(
                     color: enabled
                         ? DsfrColorDecisions.textMentionGrey(context)
@@ -158,7 +159,7 @@ class DsfrSlider extends StatelessWidget {
                 ),
                 Spacer(),
                 Text(
-                  (valueLabelBuilder ?? _defaultLabelBuilder)(max),
+                  (valueLabelBuilder ?? defaultLabelBuilder)(max),
                   style: DsfrTextStyle.bodyXs(
                     color: enabled
                         ? DsfrColorDecisions.textMentionGrey(context)
@@ -203,10 +204,10 @@ class _SliderTheme extends StatelessWidget {
         disabledActiveTickMarkColor: DsfrColorDecisions.backgroundDefaultGrey(context),
         disabledInactiveTickMarkColor: DsfrColorDecisions.backgroundDisabledGrey(context),
         thumbColor: DsfrColorDecisions.backgroundDefaultGrey(context),
-        trackHeight: _getTrackHeight(),
+        trackHeight: getTrackHeight(size),
         thumbShape: _CustomThumbShape(
           context,
-          thumbRadius: _getTrackHeight(),
+          thumbRadius: getTrackHeight(size),
           labelText: labelText,
           enabled: enabled,
         ),
@@ -216,18 +217,6 @@ class _SliderTheme extends StatelessWidget {
       child: child,
     );
   }
-
-  double _getTrackHeight() {
-    return switch (size) {
-      DsfrComponentSize.sm => 8.0,
-      DsfrComponentSize.md => 12.0,
-      _ => throw UnimplementedError('Size $size is not implemented'),
-    };
-  }
-}
-
-String _defaultLabelBuilder(double value) {
-  return (value * 100).toInt().toString();
 }
 
 class _CustomThumbShape extends RoundSliderThumbShape {
