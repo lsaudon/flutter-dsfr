@@ -7,13 +7,15 @@ import 'package:flutter_dsfr/helpers/color_utils.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
-class DsfrSlider extends StatelessWidget {
+class DsfrRangeSlider extends StatelessWidget {
   final String label;
   final String? description;
-  final double value;
+  final RangeValues values;
   final double min;
   final double max;
-  final ValueChanged<double>? onChanged;
+  final ValueChanged<RangeValues>? onChanged;
+  final ValueChanged<RangeValues>? onChangedStart;
+  final ValueChanged<RangeValues>? onChangedEnd;
   final DsfrComponentSize size;
   final bool enabled;
   final bool showMinMaxLabels;
@@ -21,10 +23,10 @@ class DsfrSlider extends StatelessWidget {
   final DsfrComposantStateEnum composantState;
   final String Function(double)? valueLabelBuilder;
 
-  const DsfrSlider._({
+  const DsfrRangeSlider._({
     super.key,
     required this.label,
-    required this.value,
+    required this.values,
     this.description,
     this.min = 0.0,
     this.max = 1.0,
@@ -32,33 +34,39 @@ class DsfrSlider extends StatelessWidget {
     required this.size,
     this.enabled = true,
     this.onChanged,
+    this.onChangedStart,
+    this.onChangedEnd,
     this.valueLabelBuilder,
     this.composantState = DsfrComposantStateEnum.none,
     this.showMinMaxLabels = false,
   });
 
-  const DsfrSlider.sm({
-    key,
-    required label,
-    description,
-    required value,
-    min = 0.0,
-    max = 1.0,
-    division,
-    onChanged,
-    valueLabelBuilder,
-    enabled = true,
-    showMinMaxLabels = false,
-    composantState = DsfrComposantStateEnum.none,
+  const DsfrRangeSlider.sm({
+    final Key? key,
+    required final String label,
+    final String? description,
+    required final RangeValues values,
+    final double min = 0.0,
+    final double max = 1.0,
+    final int? division,
+    final ValueChanged<RangeValues>? onChanged,
+    final ValueChanged<RangeValues>? onChangedStart,
+    final ValueChanged<RangeValues>? onChangedEnd,
+    final String Function(double)? valueLabelBuilder,
+    final bool enabled = true,
+    final bool showMinMaxLabels = false,
+    final DsfrComposantStateEnum composantState = DsfrComposantStateEnum.none,
   }) : this._(
           key: key,
           label: label,
           description: description,
-          value: value,
+          values: values,
           min: min,
           max: max,
           divisions: division,
           onChanged: onChanged,
+          onChangedStart: onChangedStart,
+          onChangedEnd: onChangedEnd,
           size: DsfrComponentSize.sm,
           enabled: enabled,
           valueLabelBuilder: valueLabelBuilder,
@@ -66,24 +74,26 @@ class DsfrSlider extends StatelessWidget {
           showMinMaxLabels: showMinMaxLabels,
         );
 
-  const DsfrSlider.md({
-    key,
-    required label,
-    description,
-    required value,
-    min = 0.0,
-    max = 1.0,
-    division,
-    onChanged,
-    valueLabelBuilder,
-    enabled = true,
-    showMinMaxLabels = false,
-    composantState = DsfrComposantStateEnum.none,
+  const DsfrRangeSlider.md({
+    final Key? key,
+    required final String label,
+    final String? description,
+    required final RangeValues values,
+    final double min = 0.0,
+    final double max = 1.0,
+    final int? division,
+    final ValueChanged<RangeValues>? onChanged,
+    final ValueChanged<RangeValues>? onChangedStart,
+    final ValueChanged<RangeValues>? onChangedEnd,
+    final String Function(double)? valueLabelBuilder,
+    final bool enabled = true,
+    final bool showMinMaxLabels = false,
+    final DsfrComposantStateEnum composantState = DsfrComposantStateEnum.none,
   }) : this._(
           key: key,
           label: label,
           description: description,
-          value: value,
+          values: values,
           min: min,
           max: max,
           divisions: division,
@@ -119,17 +129,19 @@ class DsfrSlider extends StatelessWidget {
                   enabled ? DsfrColorDecisions.textMentionGrey(context) : DsfrColorDecisions.textDisabledGrey(context),
             ),
           ),
-        _SliderTheme(
+        _RangeSliderTheme(
           size: size,
           enabled: enabled,
-          value: value,
-          valueLabelBuilder: valueLabelBuilder,
-          child: Slider(
+          labelText:
+              "${(valueLabelBuilder ?? _defaultLabelBuilder)(values.start)} - ${(valueLabelBuilder ?? _defaultLabelBuilder)(values.end)}",
+          child: RangeSlider(
             min: min,
             max: max,
-            value: value,
+            values: values,
             divisions: divisions,
             onChanged: enabled ? onChanged : null,
+            onChangeStart: enabled ? onChangedStart : null,
+            onChangeEnd: enabled ? onChangedEnd : null,
           ),
         ),
         if (showMinMaxLabels)
@@ -162,19 +174,17 @@ class DsfrSlider extends StatelessWidget {
   }
 }
 
-class _SliderTheme extends StatelessWidget {
+class _RangeSliderTheme extends StatelessWidget {
   final Widget child;
   final DsfrComponentSize size;
   final bool enabled;
-  final double value;
-  final String Function(double)? valueLabelBuilder;
+  final String labelText;
 
-  const _SliderTheme({
+  const _RangeSliderTheme({
     required this.child,
     required this.size,
+    required this.labelText,
     this.enabled = true,
-    required this.value,
-    this.valueLabelBuilder,
   });
 
   @override
@@ -185,22 +195,22 @@ class _SliderTheme extends StatelessWidget {
         inactiveTrackColor: DsfrColorDecisions.backgroundDefaultGrey(context),
         disabledActiveTrackColor: DsfrColorDecisions.backgroundDisabledGrey(context),
         disabledInactiveTrackColor: DsfrColorDecisions.backgroundDefaultGrey(context),
-        disabledThumbColor: DsfrColorDecisions.backgroundDisabledGrey(context),
-        tickMarkShape: _CustomRoundSliderTickMarkShape(),
+        disabledThumbColor: size == DsfrComponentSize.sm
+            ? DsfrColorDecisions.backgroundDefaultGrey(context)
+            : DsfrColorDecisions.backgroundDisabledGrey(context),
         activeTickMarkColor: DsfrColorDecisions.backgroundDefaultGrey(context),
         inactiveTickMarkColor: DsfrColorDecisions.backgroundActiveBlueFrance(context),
         disabledActiveTickMarkColor: DsfrColorDecisions.backgroundDefaultGrey(context),
         disabledInactiveTickMarkColor: DsfrColorDecisions.backgroundDisabledGrey(context),
-        trackShape: _CustomTrackShape(context),
         thumbColor: DsfrColorDecisions.backgroundDefaultGrey(context),
         trackHeight: _getTrackHeight(),
-        thumbShape: _CustomThumbShape(
+        rangeThumbShape: _CustomRangeThumbShape(
           context,
           thumbRadius: _getTrackHeight(),
-          labelText: (valueLabelBuilder ?? _defaultLabelBuilder)(value),
           enabled: enabled,
         ),
-        padding: EdgeInsets.only(top: 22),
+        rangeTrackShape: _CustomRangeTrackShape(context: context, labelText: labelText),
+        rangeTickMarkShape: _CustomRoundRangeSliderTickMarkShape(enabled: enabled),
       ),
       child: child,
     );
@@ -219,17 +229,13 @@ String _defaultLabelBuilder(double value) {
   return (value * 100).toInt().toString();
 }
 
-class _CustomThumbShape extends RoundSliderThumbShape {
+class _CustomRangeThumbShape extends RoundRangeSliderThumbShape {
   final BuildContext context;
   final double thumbRadius;
-  final String labelText;
   final bool enabled;
 
-  static const double _labelOffset = 4.0;
-
-  _CustomThumbShape(
+  _CustomRangeThumbShape(
     this.context, {
-    required this.labelText,
     required this.thumbRadius,
     required this.enabled,
   }) : super(
@@ -248,66 +254,70 @@ class _CustomThumbShape extends RoundSliderThumbShape {
     Offset center, {
     required Animation<double> activationAnimation,
     required Animation<double> enableAnimation,
-    required bool isDiscrete,
-    required TextPainter labelPainter,
-    required RenderBox parentBox,
+    bool isDiscrete = false,
+    bool isEnabled = false,
+    bool? isOnTop,
     required SliderThemeData sliderTheme,
-    required TextDirection textDirection,
-    required double value,
-    required double textScaleFactor,
-    required Size sizeWithOverflow,
+    TextDirection? textDirection,
+    Thumb? thumb,
+    bool? isPressed,
   }) {
-    super.paint(paintingContext, center,
-        activationAnimation: activationAnimation,
-        enableAnimation: enableAnimation,
-        isDiscrete: isDiscrete,
-        labelPainter: labelPainter,
-        parentBox: parentBox,
-        sliderTheme: sliderTheme,
-        textDirection: textDirection,
-        value: value,
-        textScaleFactor: textScaleFactor,
-        sizeWithOverflow: sizeWithOverflow);
+    super.paint(
+      paintingContext,
+      center,
+      activationAnimation: activationAnimation,
+      enableAnimation: enableAnimation,
+      isDiscrete: isDiscrete,
+      isEnabled: isEnabled,
+      isOnTop: isOnTop,
+      sliderTheme: sliderTheme,
+      textDirection: textDirection,
+      thumb: thumb,
+      isPressed: isPressed,
+    );
 
     final Canvas canvas = paintingContext.canvas;
 
     // Draw thumb border
-    if (enabled) {
-      final borderPaint = Paint()
-        ..color = DsfrColorDecisions.backgroundActiveBlueFrance(context)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1.0;
-      canvas.drawCircle(center, thumbRadius, borderPaint);
-    }
-
-    // Draw label above thumb
-    final labelSpan = TextSpan(
-      text: labelText,
-      style: DsfrTextStyle.bodyXs(
-        color:
-            enabled ? DsfrColorDecisions.textActiveBlueFrance(context) : DsfrColorDecisions.textDisabledGrey(context),
-      ),
-    );
-    final labelTextPainter = TextPainter(
-      text: labelSpan,
-      textAlign: TextAlign.center,
-      textDirection: textDirection,
-    );
-    labelTextPainter.layout();
-
-    final labelTextCenter = Offset(
-      center.dx - (labelTextPainter.width / 2),
-      center.dy - thumbRadius - _labelOffset - labelTextPainter.height,
-    );
-
-    labelTextPainter.paint(canvas, labelTextCenter);
+    final borderPaint = Paint()
+      ..color = enabled
+          ? DsfrColorDecisions.backgroundActiveBlueFrance(context)
+          : DsfrColorDecisions.borderDisabledGrey(context)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.0;
+    canvas.drawCircle(center, thumbRadius, borderPaint);
   }
 }
 
-class _CustomTrackShape extends RoundedRectSliderTrackShape {
+class _CustomRangeTrackShape extends RoundedRectRangeSliderTrackShape {
   final BuildContext context;
+  final String labelText;
 
-  _CustomTrackShape(this.context);
+  static const double _labelOffset = 8.0;
+
+  _CustomRangeTrackShape({required this.context, required this.labelText});
+
+  @override
+  Rect getPreferredRect({
+    required RenderBox parentBox,
+    Offset offset = Offset.zero,
+    required SliderThemeData sliderTheme,
+    bool isEnabled = false,
+    bool isDiscrete = false,
+  }) {
+    final double trackHeight = sliderTheme.trackHeight!;
+    final double trackLeft = offset.dx;
+    final double trackTop = offset.dy + (parentBox.size.height - trackHeight) / 2 + _labelOffset;
+    final double trackRight = trackLeft + parentBox.size.width;
+    final double trackBottom = trackTop + trackHeight;
+
+    return Rect.fromLTRB(
+      math.min(trackLeft, trackRight),
+      trackTop,
+      math.max(trackLeft, trackRight),
+      trackBottom,
+    );
+  }
 
   @override
   void paint(
@@ -316,11 +326,11 @@ class _CustomTrackShape extends RoundedRectSliderTrackShape {
     required RenderBox parentBox,
     required SliderThemeData sliderTheme,
     required Animation<double> enableAnimation,
-    required TextDirection textDirection,
-    required Offset thumbCenter,
-    Offset? secondaryOffset,
-    bool isDiscrete = false,
+    required Offset startThumbCenter,
+    required Offset endThumbCenter,
     bool isEnabled = false,
+    bool isDiscrete = false,
+    required TextDirection textDirection,
     double additionalActiveTrackHeight = 2,
   }) {
     super.paint(
@@ -329,11 +339,15 @@ class _CustomTrackShape extends RoundedRectSliderTrackShape {
       parentBox: parentBox,
       sliderTheme: sliderTheme,
       enableAnimation: enableAnimation,
-      textDirection: textDirection,
-      thumbCenter: thumbCenter,
-      isDiscrete: isDiscrete,
+      startThumbCenter: startThumbCenter,
+      endThumbCenter: endThumbCenter,
       isEnabled: isEnabled,
+      isDiscrete: isDiscrete,
+      textDirection: textDirection,
+      additionalActiveTrackHeight: additionalActiveTrackHeight,
     );
+
+    final Canvas canvas = paintingContext.canvas;
 
     // Dessin de la bordure
     final Rect trackRect = getPreferredRect(
@@ -358,20 +372,42 @@ class _CustomTrackShape extends RoundedRectSliderTrackShape {
       ),
       borderPaint,
     );
+
+
+    // Dessin du label au dessus de l'active track
+    final labelSpan = TextSpan(
+      text: labelText,
+      style: DsfrTextStyle.bodyXs(
+        color:
+        isEnabled ? DsfrColorDecisions.textActiveBlueFrance(context) : DsfrColorDecisions.textDisabledGrey(context),
+      ),
+    );
+    final labelTextPainter = TextPainter(
+      text: labelSpan,
+      textAlign: TextAlign.center,
+      textDirection: textDirection,
+    );
+    labelTextPainter.layout();
+
+    final double activeCenterX = (startThumbCenter.dx + endThumbCenter.dx) / 2;
+    final labelTextCenter = Offset(
+      activeCenterX - (labelTextPainter.width / 2),
+      trackRect.top - _labelOffset - labelTextPainter.height,
+    );
+
+    labelTextPainter.paint(canvas, labelTextCenter);
   }
 }
 
-class _CustomRoundSliderTickMarkShape extends SliderTickMarkShape {
+class _CustomRoundRangeSliderTickMarkShape extends RangeSliderTickMarkShape {
   static const double _activeTickMarkRadius = 2.0;
   static const double _inactiveTickMarkRadius = 1.0;
+  final bool enabled;
 
-  const _CustomRoundSliderTickMarkShape();
+  const _CustomRoundRangeSliderTickMarkShape({required this.enabled});
 
   @override
-  Size getPreferredSize({
-    required SliderThemeData sliderTheme,
-    required bool isEnabled,
-  }) {
+  Size getPreferredSize({required SliderThemeData sliderTheme, bool isEnabled = false}) {
     final double maxRadius = math.max(_activeTickMarkRadius, _inactiveTickMarkRadius);
     return Size.fromRadius(maxRadius);
   }
@@ -383,17 +419,15 @@ class _CustomRoundSliderTickMarkShape extends SliderTickMarkShape {
     required RenderBox parentBox,
     required SliderThemeData sliderTheme,
     required Animation<double> enableAnimation,
-    required Offset thumbCenter,
-    required bool isEnabled,
+    required Offset startThumbCenter,
+    required Offset endThumbCenter,
+    bool? isEnabled,
     required TextDirection textDirection,
   }) {
-    bool isActive = switch (textDirection) {
-      TextDirection.ltr => center.dx <= thumbCenter.dx,
-      TextDirection.rtl => center.dx >= thumbCenter.dx,
-    };
+    bool isActive = center.dx >= startThumbCenter.dx && center.dx <= endThumbCenter.dx;
 
     final double tickMarkRadius = isActive ? _activeTickMarkRadius : _inactiveTickMarkRadius;
-    final Color? tickMarkColor = switch ((isEnabled, isActive)) {
+    final Color? tickMarkColor = switch ((enabled, isActive)) {
       (false, false) => sliderTheme.disabledInactiveTickMarkColor,
       (false, true) => sliderTheme.disabledActiveTickMarkColor,
       (true, true) => sliderTheme.activeTickMarkColor,
