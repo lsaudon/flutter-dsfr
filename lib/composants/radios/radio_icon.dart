@@ -9,20 +9,20 @@ class RadioIcon<T> extends StatelessWidget {
     required this.groupValue,
     this.enabled = true,
     this.state = DsfrComposantStateEnum.none,
-    this.outerDiameter = 24.0,
-    this.innerDiameter = 12.0,
+    required this.size,
   });
 
   final T value;
   final T? groupValue;
   final bool enabled;
   final DsfrComposantStateEnum state;
-  final double outerDiameter;
-  final double innerDiameter;
+  final double size;
 
   @override
   Widget build(final context) {
     final isSelected = groupValue == value;
+    final outerDiameter = size;
+    final innerDiameter = size / 2;
     return Semantics(
       checked: isSelected,
       selected: isSelected,
@@ -56,7 +56,7 @@ class RadioIcon<T> extends StatelessWidget {
 
   Color getFillColor(BuildContext context) {
     if (!enabled) {
-      return DsfrColorDecisions.backgroundDisabledGrey(context);
+      return DsfrColorDecisions.textDisabledGrey(context);
     } else {
       return DsfrColorDecisions.borderActiveBlueFrance(context);
     }

@@ -10,6 +10,7 @@ import 'package:example/master_page.dart';
 import 'package:example/modals_page.dart';
 import 'package:example/notice_page.dart';
 import 'package:example/radios_page.dart';
+import 'package:example/radios_riches_page.dart';
 import 'package:example/sandbox_page.dart';
 import 'package:example/select_page.dart';
 import 'package:example/slider_page.dart';
@@ -67,6 +68,7 @@ class _MyAppState extends State<MyApp> {
               LinksPage.model,
               ModalsPage.model,
               RadiosPage.model,
+              RadiosRichesPage.model,
               TagsPage.model,
               TogglesPage.model,
               NoticePage.model,
