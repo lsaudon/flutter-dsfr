@@ -50,7 +50,7 @@
 | Sélecteur de langue (Translate)                                    | ❌            |                                                                    |
 | Sommaire (Summary)                                                 | ❌            |                                                                    |
 | Tableau (Table)                                                    | ❌            |                                                                    |
-| Tag                                                                | ✔️           | manque : sélectionnable / désactivé / supprimable + groupe de tags |
+| Tag                                                                | ✔️            | manque : désactivé / supprimable + groupe de tags |
 | Téléchargement de fichier (Download)                               | ❌            |                                                                    |
 | Transcription                                                      | ❌            |                                                                    |
 | Tuile (Tile)                                                       | ❌            |                                                                    |
