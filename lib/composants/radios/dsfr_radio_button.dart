@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/composants/radios/radio_icon.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
@@ -16,7 +17,7 @@ class DsfrRadioButton<T> extends StatelessWidget {
     this.groupValue,
     this.onChanged,
     this.enabled = true,
-    this.composantState = DsfrComposantStateEnum.none,
+    this.composantState,
     required this.size,
   }) : assert(size != DsfrComponentSize.lg);
 
@@ -26,55 +27,59 @@ class DsfrRadioButton<T> extends StatelessWidget {
   final T? groupValue;
   final ValueChanged<T?>? onChanged;
   final bool enabled;
-  final DsfrComposantStateEnum composantState;
+  final DsfrComposantState? composantState;
   final DsfrComponentSize size;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: DsfrColorDecisions.backgroundTransparent(context),
-      child: InkWell(
-        onTap: (!enabled || onChanged == null) ? null : () => onChanged!(value),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              spacing: DsfrSpacings.s1w,
-              children: [
-                RadioIcon(
-                  key: ValueKey(label),
-                  value: value,
-                  groupValue: groupValue,
-                  enabled: enabled,
-                  state: composantState,
-                  size: _getIconSize(),
-                ),
-                Text(
-                  label,
-                  style: DsfrTextStyle.bodyMd(
-                    color: enabled
-                        ? getTextColor(context, composantState, defaultColor: DsfrColorDecisions.textLabelGrey(context))
-                        : DsfrColorDecisions.textDisabledGrey(context),
+    return DsfrFormState(
+      composantState: composantState ?? DsfrComposantState.none(),
+      child: Material(
+        color: DsfrColorDecisions.backgroundTransparent(context),
+        child: InkWell(
+          onTap: (!enabled || onChanged == null) ? null : () => onChanged!(value),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: DsfrSpacings.s1w,
+                children: [
+                  RadioIcon(
+                    key: ValueKey(label),
+                    value: value,
+                    groupValue: groupValue,
+                    enabled: enabled,
+                    state: composantState?.state ?? DsfrComposantStateEnum.none,
+                    size: _getIconSize(),
                   ),
-                )
-              ],
-            ),
-            if (description != null)
-              Padding(
-                padding: EdgeInsets.only(left: _getIconSize() + DsfrSpacings.s1w),
-                child: Text(
-                  description!,
-                  style: DsfrTextStyle.bodyXs(
-                    color: enabled
-                        ? DsfrColorDecisions.textMentionGrey(context)
-                        : DsfrColorDecisions.textDisabledGrey(context),
-                  ),
-                ),
+                  Text(
+                    label,
+                    style: DsfrTextStyle.bodyMd(
+                      color: enabled
+                          ? getTextColor(context, composantState?.state ?? DsfrComposantStateEnum.none,
+                              defaultColor: DsfrColorDecisions.textLabelGrey(context))
+                          : DsfrColorDecisions.textDisabledGrey(context),
+                    ),
+                  )
+                ],
               ),
-          ],
+              if (description != null)
+                Padding(
+                  padding: EdgeInsets.only(left: _getIconSize() + DsfrSpacings.s1w),
+                  child: Text(
+                    description!,
+                    style: DsfrTextStyle.bodyXs(
+                      color: enabled
+                          ? DsfrColorDecisions.textMentionGrey(context)
+                          : DsfrColorDecisions.textDisabledGrey(context),
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

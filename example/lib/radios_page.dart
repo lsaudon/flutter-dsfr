@@ -1,6 +1,5 @@
 import 'package:example/mise_en_page/page_section.dart';
 import 'package:example/mise_en_page/page_sub_section.dart';
-import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/composants/radios/dsfr_radio_button.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
@@ -130,70 +129,58 @@ class _RadiosPageState extends State<RadiosPage> {
                   PageSubSection(
                     title: "Succès",
                     children: [
-                      DsfrFormState(
+                      DsfrRadioButton(
+                        label: 'Bouton Radio - SM',
+                        value: 8,
+                        groupValue: _value,
                         composantState: DsfrComposantState.success(message: "Texte de validation optionnel"),
-                        child: DsfrRadioButton(
-                          label: 'Bouton Radio - SM',
-                          value: 8,
-                          groupValue: _value,
-                          composantState: DsfrComposantStateEnum.success,
-                          onChanged: (final value) {
-                            if (value != null) {
-                              setState(() => _value = value);
-                            }
-                          },
-                          size: DsfrComponentSize.sm,
-                        ),
+                        onChanged: (final value) {
+                          if (value != null) {
+                            setState(() => _value = value);
+                          }
+                        },
+                        size: DsfrComponentSize.sm,
                       ),
-                      DsfrFormState(
+                      DsfrRadioButton(
+                        label: 'Bouton Radio - MD',
+                        value: 9,
+                        groupValue: _value,
                         composantState: DsfrComposantState.success(message: "Texte de validation optionnel"),
-                        child: DsfrRadioButton(
-                          label: 'Bouton Radio - MD',
-                          value: 9,
-                          groupValue: _value,
-                          composantState: DsfrComposantStateEnum.success,
-                          onChanged: (final value) {
-                            if (value != null) {
-                              setState(() => _value = value);
-                            }
-                          },
-                          size: DsfrComponentSize.md,
-                        ),
+                        onChanged: (final value) {
+                          if (value != null) {
+                            setState(() => _value = value);
+                          }
+                        },
+                        size: DsfrComponentSize.md,
                       ),
                     ],
                   ),
                   PageSubSection(
                     title: "Erreur",
                     children: [
-                      DsfrFormState(
+                      DsfrRadioButton(
+                        label: 'Bouton Radio - SM',
+                        value: 10,
+                        groupValue: _value,
                         composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
-                        child: DsfrRadioButton(
-                          label: 'Bouton Radio - SM',
-                          value: 10,
-                          groupValue: _value,
-                          composantState: DsfrComposantStateEnum.error,
-                          onChanged: (final value) {
-                            if (value != null) {
-                              setState(() => _value = value);
-                            }
-                          },
-                          size: DsfrComponentSize.sm,
-                        ),
+                        onChanged: (final value) {
+                          if (value != null) {
+                            setState(() => _value = value);
+                          }
+                        },
+                        size: DsfrComponentSize.sm,
                       ),
-                      DsfrFormState(
+                      DsfrRadioButton(
+                        label: 'Bouton Radio - MD',
+                        value: 11,
+                        groupValue: _value,
                         composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
-                        child: DsfrRadioButton(
-                          label: 'Bouton Radio - MD',
-                          value: 11,
-                          groupValue: _value,
-                          composantState: DsfrComposantStateEnum.error,
-                          onChanged: (final value) {
-                            if (value != null) {
-                              setState(() => _value = value);
-                            }
-                          },
-                          size: DsfrComponentSize.md,
-                        ),
+                        onChanged: (final value) {
+                          if (value != null) {
+                            setState(() => _value = value);
+                          }
+                        },
+                        size: DsfrComponentSize.md,
                       ),
                     ],
                   )
