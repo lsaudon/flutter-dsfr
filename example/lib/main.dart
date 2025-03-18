@@ -12,6 +12,7 @@ import 'package:example/notice_page.dart';
 import 'package:example/radios_page.dart';
 import 'package:example/sandbox_page.dart';
 import 'package:example/select_page.dart';
+import 'package:example/slider_page.dart';
 import 'package:example/tags_page.dart';
 import 'package:example/text_page.dart';
 import 'package:example/toggles_page.dart';
@@ -69,6 +70,7 @@ class _MyAppState extends State<MyApp> {
               TagsPage.model,
               TogglesPage.model,
               NoticePage.model,
+              SliderPage.model,
             ],
           ),
           builder: (final context, final child) => AccessibilityTools(child: child),

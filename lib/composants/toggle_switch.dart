@@ -1,3 +1,4 @@
+import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/atoms/focus_widget.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
@@ -22,14 +23,14 @@ class DsfrToggleSwitch extends StatefulWidget {
     this.onChanged,
     this.description,
     this.status,
-    this.composantState = DsfrComposantStateEnum.none,
+    this.composantState,
   });
 
   final String label;
   final bool value;
   final bool enabled;
   final DsfrToggleLabelLocation labelLocation;
-  final DsfrComposantStateEnum composantState;
+  final DsfrComposantState? composantState;
   final ValueChanged<bool>? onChanged;
   final String? description;
   final String? status;
@@ -41,9 +42,10 @@ class DsfrToggleSwitch extends StatefulWidget {
 class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateMixin<DsfrToggleSwitch> {
   @override
   Widget build(final context) {
-    final textColor =
-        widget.enabled ? getTextColor(context, widget.composantState) : DsfrColorDecisions.textDisabledGrey(context);
-    final statusTextColor = switch ((widget.enabled, widget.composantState)) {
+    final textColor = widget.enabled
+        ? getTextColor(context, widget.composantState?.state ?? DsfrComposantStateEnum.none)
+        : DsfrColorDecisions.textDisabledGrey(context);
+    final statusTextColor = switch ((widget.enabled, widget.composantState?.state)) {
       (false, _) => DsfrColorDecisions.textDisabledGrey(context),
       (true, DsfrComposantStateEnum.error) => DsfrColorDecisions.textDefaultError(context),
       (true, DsfrComposantStateEnum.success) => DsfrColorDecisions.textDefaultSuccess(context),
@@ -57,7 +59,7 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         child: _Switch(
           value: widget.value,
           enabled: widget.enabled,
-          composantState: widget.composantState,
+          composantState: widget.composantState?.state ?? DsfrComposantStateEnum.none,
         ),
       ),
       Expanded(
@@ -104,9 +106,12 @@ class _DsfrToggleSwitchState extends State<DsfrToggleSwitch> with MaterialStateM
         splashFactory: NoSplash.splashFactory,
         excludeFromSemantics: true,
         onFocusChange: updateMaterialState(WidgetState.focused),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: columnChildren,
+        child: DsfrFormState(
+          composantState: widget.composantState ?? DsfrComposantState.none(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: columnChildren,
+          ),
         ),
       ),
     );
