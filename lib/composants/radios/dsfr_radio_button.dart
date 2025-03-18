@@ -32,53 +32,56 @@ class DsfrRadioButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DsfrFormState(
-      composantState: composantState ?? DsfrComposantState.none(),
-      child: Material(
-        color: DsfrColorDecisions.backgroundTransparent(context),
-        child: InkWell(
-          onTap: (!enabled || onChanged == null) ? null : () => onChanged!(value),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: DsfrSpacings.s1w,
-                children: [
-                  RadioIcon(
-                    key: ValueKey(label),
-                    value: value,
-                    groupValue: groupValue,
-                    enabled: enabled,
-                    state: composantState?.state ?? DsfrComposantStateEnum.none,
-                    size: _getIconSize(),
-                  ),
-                  Text(
-                    label,
-                    style: DsfrTextStyle.bodyMd(
-                      color: enabled
-                          ? getTextColor(context, composantState?.state ?? DsfrComposantStateEnum.none,
-                              defaultColor: DsfrColorDecisions.textLabelGrey(context))
-                          : DsfrColorDecisions.textDisabledGrey(context),
+    return Semantics(
+      enabled: enabled,
+      child: DsfrFormState(
+        composantState: composantState ?? DsfrComposantState.none(),
+        child: Material(
+          color: DsfrColorDecisions.backgroundTransparent(context),
+          child: InkWell(
+            onTap: (!enabled || onChanged == null) ? null : () => onChanged!(value),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  spacing: DsfrSpacings.s1w,
+                  children: [
+                    RadioIcon(
+                      key: ValueKey(label),
+                      value: value,
+                      groupValue: groupValue,
+                      enabled: enabled,
+                      state: composantState?.state ?? DsfrComposantStateEnum.none,
+                      size: _getIconSize(),
                     ),
-                  )
-                ],
-              ),
-              if (description != null)
-                Padding(
-                  padding: EdgeInsets.only(left: _getIconSize() + DsfrSpacings.s1w),
-                  child: Text(
-                    description!,
-                    style: DsfrTextStyle.bodyXs(
-                      color: enabled
-                          ? DsfrColorDecisions.textMentionGrey(context)
-                          : DsfrColorDecisions.textDisabledGrey(context),
-                    ),
-                  ),
+                    Text(
+                      label,
+                      style: DsfrTextStyle.bodyMd(
+                        color: enabled
+                            ? getTextColor(context, composantState?.state ?? DsfrComposantStateEnum.none,
+                                defaultColor: DsfrColorDecisions.textLabelGrey(context))
+                            : DsfrColorDecisions.textDisabledGrey(context),
+                      ),
+                    )
+                  ],
                 ),
-            ],
+                if (description != null)
+                  Padding(
+                    padding: EdgeInsets.only(left: _getIconSize() + DsfrSpacings.s1w),
+                    child: Text(
+                      description!,
+                      style: DsfrTextStyle.bodyXs(
+                        color: enabled
+                            ? DsfrColorDecisions.textMentionGrey(context)
+                            : DsfrColorDecisions.textDisabledGrey(context),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
           ),
         ),
       ),
