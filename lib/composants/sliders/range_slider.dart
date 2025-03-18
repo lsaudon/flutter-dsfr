@@ -151,28 +151,30 @@ class DsfrRangeSlider extends StatelessWidget {
             ),
           ),
           if (showMinMaxLabels)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4.0),
-              child: Row(
-                children: [
-                  Text(
-                    (valueLabelBuilder ?? defaultLabelBuilder)(min),
-                    style: DsfrTextStyle.bodyXs(
-                      color: enabled
-                          ? DsfrColorDecisions.textMentionGrey(context)
-                          : DsfrColorDecisions.textDisabledGrey(context),
+            ExcludeSemantics(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: Row(
+                  children: [
+                    Text(
+                      (valueLabelBuilder ?? defaultLabelBuilder)(min),
+                      style: DsfrTextStyle.bodyXs(
+                        color: enabled
+                            ? DsfrColorDecisions.textMentionGrey(context)
+                            : DsfrColorDecisions.textDisabledGrey(context),
+                      ),
                     ),
-                  ),
-                  Spacer(),
-                  Text(
-                    (valueLabelBuilder ?? defaultLabelBuilder)(max),
-                    style: DsfrTextStyle.bodyXs(
-                      color: enabled
-                          ? DsfrColorDecisions.textMentionGrey(context)
-                          : DsfrColorDecisions.textDisabledGrey(context),
+                    Spacer(),
+                    Text(
+                      (valueLabelBuilder ?? defaultLabelBuilder)(max),
+                      style: DsfrTextStyle.bodyXs(
+                        color: enabled
+                            ? DsfrColorDecisions.textMentionGrey(context)
+                            : DsfrColorDecisions.textDisabledGrey(context),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
         ],

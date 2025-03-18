@@ -70,8 +70,7 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                             groupValue: widget.groupValue,
                             enabled: widget.enabled,
                             state: widget.state,
-                            innerDiameter: 8.0,
-                            outerDiameter: 16.0,
+                            size: 16.0,
                           ),
                           const SizedBox(width: DsfrSpacings.s1w),
                           Column(
