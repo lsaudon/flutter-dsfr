@@ -2,7 +2,6 @@ import 'package:example/mise_en_page/page_section.dart';
 import 'package:example/mise_en_page/page_sub_section.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/composants/sliders/range_slider.dart';
 import 'package:flutter_dsfr/composants/sliders/slider.dart';
 import 'package:flutter_dsfr/helpers/composant_state.dart';
@@ -183,54 +182,42 @@ class _SliderPageState extends State<SliderPage> {
                 PageSubSection(
                   title: "En succès",
                   children: [
-                    DsfrFormState(
+                    DsfrSlider.sm(
+                      label: "Curseur SM",
+                      value: _value,
                       composantState: DsfrComposantState.success(message: "Texte validation optionnel"),
-                      child: DsfrSlider.sm(
-                        label: "Curseur SM - Succès",
-                        value: _value,
-                        composantState: DsfrComposantStateEnum.success,
-                        onChanged: (final newValue) {
-                          setState(() => _value = newValue);
-                        },
-                      ),
+                      onChanged: (final newValue) {
+                        setState(() => _value = newValue);
+                      },
                     ),
-                    DsfrFormState(
+                    DsfrSlider.md(
+                      label: "Curseur MD",
+                      value: _value,
                       composantState: DsfrComposantState.success(message: "Texte validation optionnel"),
-                      child: DsfrSlider.md(
-                        label: "Curseur MD - Succès",
-                        value: _value,
-                        composantState: DsfrComposantStateEnum.success,
-                        onChanged: (final newValue) {
-                          setState(() => _value = newValue);
-                        },
-                      ),
+                      onChanged: (final newValue) {
+                        setState(() => _value = newValue);
+                      },
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "En erreur",
                   children: [
-                    DsfrFormState(
+                    DsfrSlider.sm(
+                      label: "Curseur",
+                      value: _value,
                       composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
-                      child: DsfrSlider.sm(
-                        label: "Curseur SM - Erreur",
-                        value: _value,
-                        composantState: DsfrComposantStateEnum.error,
-                        onChanged: (final newValue) {
-                          setState(() => _value = newValue);
-                        },
-                      ),
+                      onChanged: (final newValue) {
+                        setState(() => _value = newValue);
+                      },
                     ),
-                    DsfrFormState(
+                    DsfrSlider.md(
+                      label: "Curseur",
+                      value: _value,
                       composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
-                      child: DsfrSlider.md(
-                        label: "Curseur MD - Erreur",
-                        value: _value,
-                        composantState: DsfrComposantStateEnum.error,
-                        onChanged: (final newValue) {
-                          setState(() => _value = newValue);
-                        },
-                      ),
+                      onChanged: (final newValue) {
+                        setState(() => _value = newValue);
+                      },
                     ),
                   ],
                 )
@@ -387,54 +374,42 @@ class _SliderPageState extends State<SliderPage> {
                 PageSubSection(
                   title: "En succès",
                   children: [
-                    DsfrFormState(
+                    DsfrRangeSlider.sm(
+                      label: "Curseur",
+                      values: _rangeValues,
                       composantState: DsfrComposantState.success(message: "Texte validation optionnel"),
-                      child: DsfrRangeSlider.sm(
-                        label: "Curseur SM - Succès",
-                        values: _rangeValues,
-                        composantState: DsfrComposantStateEnum.success,
-                        onChanged: (final newValues) {
-                          setState(() => _rangeValues = newValues);
-                        },
-                      ),
+                      onChanged: (final newValues) {
+                        setState(() => _rangeValues = newValues);
+                      },
                     ),
-                    DsfrFormState(
+                    DsfrRangeSlider.md(
+                      label: "Curseur",
+                      values: _rangeValues,
                       composantState: DsfrComposantState.success(message: "Texte validation optionnel"),
-                      child: DsfrRangeSlider.md(
-                        label: "Curseur MD - Succès",
-                        values: _rangeValues,
-                        composantState: DsfrComposantStateEnum.success,
-                        onChanged: (final newValues) {
-                          setState(() => _rangeValues = newValues);
-                        },
-                      ),
+                      onChanged: (final newValues) {
+                        setState(() => _rangeValues = newValues);
+                      },
                     ),
                   ],
                 ),
                 PageSubSection(
                   title: "En erreur",
                   children: [
-                    DsfrFormState(
+                    DsfrRangeSlider.sm(
+                      label: "Curseur SM",
+                      values: _rangeValues,
                       composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
-                      child: DsfrRangeSlider.sm(
-                        label: "Curseur SM - Erreur",
-                        values: _rangeValues,
-                        composantState: DsfrComposantStateEnum.error,
-                        onChanged: (final newValues) {
-                          setState(() => _rangeValues = newValues);
-                        },
-                      ),
+                      onChanged: (final newValues) {
+                        setState(() => _rangeValues = newValues);
+                      },
                     ),
-                    DsfrFormState(
+                    DsfrRangeSlider.md(
+                      label: "Curseur MD",
+                      values: _rangeValues,
                       composantState: DsfrComposantState.error(errorMessage: "Texte d'erreur obligatoire"),
-                      child: DsfrRangeSlider.md(
-                        label: "Curseur MD - Erreur",
-                        values: _rangeValues,
-                        composantState: DsfrComposantStateEnum.error,
-                        onChanged: (final newValues) {
-                          setState(() => _rangeValues = newValues);
-                        },
-                      ),
+                      onChanged: (final newValues) {
+                        setState(() => _rangeValues = newValues);
+                      },
                     ),
                   ],
                 )

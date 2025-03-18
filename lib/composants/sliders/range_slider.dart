@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
 import 'package:flutter_dsfr/composants/sliders/sliders_utils.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/fonts.dart';
@@ -21,7 +22,7 @@ class DsfrRangeSlider extends StatelessWidget {
   final bool enabled;
   final bool showMinMaxLabels;
   final int? divisions;
-  final DsfrComposantStateEnum composantState;
+  final DsfrComposantState? composantState;
   final String Function(double)? valueLabelBuilder;
 
   const DsfrRangeSlider._({
@@ -38,7 +39,7 @@ class DsfrRangeSlider extends StatelessWidget {
     this.onChangedStart,
     this.onChangedEnd,
     this.valueLabelBuilder,
-    this.composantState = DsfrComposantStateEnum.none,
+    this.composantState,
     this.showMinMaxLabels = false,
   });
 
@@ -56,7 +57,7 @@ class DsfrRangeSlider extends StatelessWidget {
     final String Function(double)? valueLabelBuilder,
     final bool enabled = true,
     final bool showMinMaxLabels = false,
-    final DsfrComposantStateEnum composantState = DsfrComposantStateEnum.none,
+    final DsfrComposantState? composantState,
   }) : this._(
           key: key,
           label: label,
@@ -89,7 +90,7 @@ class DsfrRangeSlider extends StatelessWidget {
     final String Function(double)? valueLabelBuilder,
     final bool enabled = true,
     final bool showMinMaxLabels = false,
-    final DsfrComposantStateEnum composantState = DsfrComposantStateEnum.none,
+    final DsfrComposantState? composantState,
   }) : this._(
           key: key,
           label: label,
@@ -109,68 +110,73 @@ class DsfrRangeSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final labelColor = enabled
-        ? getTextColor(context, composantState, defaultColor: DsfrColorDecisions.textLabelGrey(context))
+        ? getTextColor(context, composantState?.state ?? DsfrComposantStateEnum.none,
+            defaultColor: DsfrColorDecisions.textLabelGrey(context))
         : DsfrColorDecisions.textDisabledGrey(context);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 4,
-      children: [
-        Text(
-          label,
-          style: DsfrTextStyle.bodyMd(
-            color: labelColor,
-          ),
-        ),
-        if (description != null)
+    return DsfrFormState(
+      composantState: composantState ?? DsfrComposantState.none(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 4,
+        children: [
           Text(
-            description!,
-            style: DsfrTextStyle.bodyXs(
-              color:
-                  enabled ? DsfrColorDecisions.textMentionGrey(context) : DsfrColorDecisions.textDisabledGrey(context),
+            label,
+            style: DsfrTextStyle.bodyMd(
+              color: labelColor,
             ),
           ),
-        _RangeSliderTheme(
-          size: size,
-          enabled: enabled,
-          labelText:
-              "${(valueLabelBuilder ?? defaultLabelBuilder)(values.start)} - ${(valueLabelBuilder ?? defaultLabelBuilder)(values.end)}",
-          child: RangeSlider(
-            min: min,
-            max: max,
-            values: values,
-            divisions: divisions,
-            onChanged: enabled ? onChanged : null,
-            onChangeStart: enabled ? onChangedStart : null,
-            onChangeEnd: enabled ? onChangedEnd : null,
-          ),
-        ),
-        if (showMinMaxLabels)
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
-            child: Row(
-              children: [
-                Text(
-                  (valueLabelBuilder ?? defaultLabelBuilder)(min),
-                  style: DsfrTextStyle.bodyXs(
-                    color: enabled
-                        ? DsfrColorDecisions.textMentionGrey(context)
-                        : DsfrColorDecisions.textDisabledGrey(context),
-                  ),
-                ),
-                Spacer(),
-                Text(
-                  (valueLabelBuilder ?? defaultLabelBuilder)(max),
-                  style: DsfrTextStyle.bodyXs(
-                    color: enabled
-                        ? DsfrColorDecisions.textMentionGrey(context)
-                        : DsfrColorDecisions.textDisabledGrey(context),
-                  ),
-                ),
-              ],
+          if (description != null)
+            Text(
+              description!,
+              style: DsfrTextStyle.bodyXs(
+                color: enabled
+                    ? DsfrColorDecisions.textMentionGrey(context)
+                    : DsfrColorDecisions.textDisabledGrey(context),
+              ),
+            ),
+          _RangeSliderTheme(
+            size: size,
+            enabled: enabled,
+            labelText:
+                "${(valueLabelBuilder ?? defaultLabelBuilder)(values.start)} - ${(valueLabelBuilder ?? defaultLabelBuilder)(values.end)}",
+            child: RangeSlider(
+              min: min,
+              max: max,
+              values: values,
+              divisions: divisions,
+              onChanged: enabled ? onChanged : null,
+              onChangeStart: enabled ? onChangedStart : null,
+              onChangeEnd: enabled ? onChangedEnd : null,
             ),
           ),
-      ],
+          if (showMinMaxLabels)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: Row(
+                children: [
+                  Text(
+                    (valueLabelBuilder ?? defaultLabelBuilder)(min),
+                    style: DsfrTextStyle.bodyXs(
+                      color: enabled
+                          ? DsfrColorDecisions.textMentionGrey(context)
+                          : DsfrColorDecisions.textDisabledGrey(context),
+                    ),
+                  ),
+                  Spacer(),
+                  Text(
+                    (valueLabelBuilder ?? defaultLabelBuilder)(max),
+                    style: DsfrTextStyle.bodyXs(
+                      color: enabled
+                          ? DsfrColorDecisions.textMentionGrey(context)
+                          : DsfrColorDecisions.textDisabledGrey(context),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
@@ -362,13 +368,12 @@ class _CustomRangeTrackShape extends RoundedRectRangeSliderTrackShape {
       borderPaint,
     );
 
-
     // Dessin du label au dessus de l'active track
     final labelSpan = TextSpan(
       text: labelText,
       style: DsfrTextStyle.bodyXs(
         color:
-        isEnabled ? DsfrColorDecisions.textActiveBlueFrance(context) : DsfrColorDecisions.textDisabledGrey(context),
+            isEnabled ? DsfrColorDecisions.textActiveBlueFrance(context) : DsfrColorDecisions.textDisabledGrey(context),
       ),
     );
     final labelTextPainter = TextPainter(
