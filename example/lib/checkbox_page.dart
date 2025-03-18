@@ -18,11 +18,14 @@ class CheckboxPage extends StatefulWidget {
 class _CheckboxPageState extends State<CheckboxPage> {
   bool _value = false;
   bool _value2 = false;
+  bool _valueGroup1 = false;
+  bool _valueGroup2 = false;
+  bool _valueGroup3 = false;
 
   @override
   Widget build(final context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 98),
       child: Column(
         spacing: 16,
         children: [
@@ -100,6 +103,143 @@ class _CheckboxPageState extends State<CheckboxPage> {
                   value: false,
                   onChanged: (final value) {},
                 ),
+              ),
+            ],
+          ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              'Groupes de cases à cocher :',
+              style: DsfrTextStyle.headline3(color: DsfrColorDecisions.textActiveBlueFrance(context)),
+            ),
+          ),
+          DsfrGroup(
+            label: 'Légende',
+            widgets: [
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup1,
+                onChanged: (final value) => setState(() {
+                  _valueGroup1 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup2,
+                onChanged: (final value) => setState(() {
+                  _valueGroup2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup3,
+                onChanged: (final value) => setState(() {
+                  _valueGroup3 = value;
+                }),
+              ),
+            ],
+          ),
+          Divider(),
+          DsfrGroup<DsfrCheckbox>(
+            label: 'Légende',
+            widgets: [
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup1,
+                onChanged: (final value) => setState(() {
+                  _valueGroup1 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup2,
+                onChanged: (final value) => setState(() {
+                  _valueGroup2 = value;
+                }),
+              ),
+            ],
+          ),
+          Divider(),
+          DsfrGroup<DsfrCheckbox>(
+            label: 'Groupe avec description de groupe',
+            description: 'Texte de description additionnel',
+            widgets: [
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup1,
+                onChanged: (final value) => setState(() {
+                  _valueGroup1 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup2,
+                onChanged: (final value) => setState(() {
+                  _valueGroup2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup3,
+                onChanged: (final value) => setState(() {
+                  _valueGroup3 = value;
+                }),
+              ),
+            ],
+          ),
+          Divider(),
+          DsfrGroup<DsfrCheckbox>(
+            label: 'Groupe en erreur',
+            composantState: DsfrComposantState.error(errorMessage: 'Texte d\'erreur obligatoire'),
+            widgets: [
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup1,
+                onChanged: (final value) => setState(() {
+                  _valueGroup1 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup2,
+                onChanged: (final value) => setState(() {
+                  _valueGroup2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup3,
+                onChanged: (final value) => setState(() {
+                  _valueGroup3 = value;
+                }),
+              ),
+            ],
+          ),
+          Divider(),
+          DsfrGroup<DsfrCheckbox>(
+            label: 'Groupe en succès',
+            composantState: DsfrComposantState.success(message: 'Texte de validation optionnel'),
+            widgets: [
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup1,
+                onChanged: (final value) => setState(() {
+                  _valueGroup1 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup2,
+                onChanged: (final value) => setState(() {
+                  _valueGroup2 = value;
+                }),
+              ),
+              DsfrCheckbox.md(
+                label: 'Libellé',
+                value: _valueGroup3,
+                onChanged: (final value) => setState(() {
+                  _valueGroup3 = value;
+                }),
               ),
             ],
           ),
