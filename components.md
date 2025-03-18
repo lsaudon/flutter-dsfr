@@ -24,7 +24,7 @@
 | Citation (Quote)                                                   | ❌            |                                                                    |
 | Contenu médias (Content Management)                                | ❌            |                                                                    |
 | Contrôle segmenté (Segmented control)                              | ❌            |                                                                    |
-| Curseur (Range)                                                    | ❌            |                                                                    |
+| Curseur (Range)                                                    | ✅            |                                                                    |
 | En-tête (Header)                                                   | ❌            |                                                                    |
 | Fil d'Ariane (Breadcrumb)                                          | ❌            |                                                                    |
 | Gestionnaire de consentement (Consent banner)                      | ❌            |                                                                    |
