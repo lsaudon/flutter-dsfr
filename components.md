@@ -10,23 +10,23 @@
 | Accordéon (Accordion)                                              | ✅           |                                                                    |
 | Ajout de fichier (Upload)                                          | ❌           |                                                                    |
 | Alerte (Alert)                                                     | ❌           |                                                                    |
-| Badge                                                              | ❌           |                                                                    |
+| Badge                                                              | ✅           |                                                                    |
 | Bandeau d'information importante (Notice)                          | ❌           |                                                                    |
 | Barre de recherche (Search)                                        | ❌           |                                                                    |
 | Bouton (Button)                                                    | ✅           |                                                                    |
 | Groupe de boutons (Button group)                                   | ❌           |                                                                    |
 | Bouton FranceConnect                                               | ❌           |                                                                    |
-| Bouton radio (Radio)                                               | ❌           |                                                                    |
+| Bouton radio (Radio)                                               | ✅           |                                                                    |
 | Bouton radio riche (Radio rich)                                    | ✅           |                                                                    |
-| Case à cocher (Checkbox)                                           | ✔️          |                                                                    |
+| Case à cocher (Checkbox)                                           | ✅          |                                                                    |
 | Carte (Card)                                                       | ❌           |                                                                    |
-| Champ de saisie (Input)                                            | ✔️          | manque : date unique + multiligne                                  |
+| Champ de saisie (Input)                                            | ✔️          | manque : date unique                                                |
 | Citation (Quote)                                                   | ❌           |                                                                    |
 | Contenu médias (Content Management)                                | ❌           |                                                                    |
 | Contrôle segmenté (Segmented control)                              | ❌           |                                                                    |
 | Curseur (Range)                                                    | ✅           |                                                                    |
 | En-tête (Header)                                                   | ❌           |                                                                    |
-| Fil d'Ariane (Breadcrumb)                                          | ❌           |                                                                    |
+| Fil d'Ariane (Breadcrumb)                                          | ❌           | Mobile non concerné                                                                   |
 | Gestionnaire de consentement (Consent banner)                      | ❌           |                                                                    |
 | Indicateur d'étapes (Stepper)                                      | ✅           |                                                                    |
 | Infobulle (Tooltip)                                                | ❌           |                                                                    |
