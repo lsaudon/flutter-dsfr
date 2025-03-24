@@ -12,17 +12,17 @@ class RadiosRichesPage extends StatefulWidget {
   );
 
   @override
-  State<RadiosRichesPage> createState() => _RadiosRichesPageState();
+  State<RadiosRichesPage> createState() => _RadiosRichePageState();
 }
 
-class _RadiosRichesPageState extends State<RadiosRichesPage> {
+class _RadiosRichePageState extends State<RadiosRichesPage> {
   int _value = 0;
 
   @override
   Widget build(final context) => ListView(
         padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 98),
         children: [
-          DsfrRadioRichButtonSet(
+          DsfrRadioButtonGroup.rich(
             title: 'Radios riches',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
@@ -30,19 +30,6 @@ class _RadiosRichesPageState extends State<RadiosRichesPage> {
           const SizedBox(height: DsfrSpacings.s3w),
           DsfrRadioRichButton<int>(
             title: 'Un',
-            value: 0,
-            groupValue: _value,
-            onChanged: (final value) {
-              if (value != null) {
-                setState(() {
-                  _value = value;
-                });
-              }
-            },
-          ),
-          const SizedBox(height: DsfrSpacings.s1w),
-          DsfrRadioRichButton<int>(
-            title: 'Deux',
             value: 1,
             groupValue: _value,
             onChanged: (final value) {
@@ -55,7 +42,7 @@ class _RadiosRichesPageState extends State<RadiosRichesPage> {
           ),
           const SizedBox(height: DsfrSpacings.s1w),
           DsfrRadioRichButton<int>(
-            title: 'Trois',
+            title: 'Deux',
             value: 2,
             groupValue: _value,
             onChanged: (final value) {
@@ -68,8 +55,21 @@ class _RadiosRichesPageState extends State<RadiosRichesPage> {
           ),
           const SizedBox(height: DsfrSpacings.s1w),
           DsfrRadioRichButton<int>(
-            title: 'Quatre',
+            title: 'Trois',
             value: 3,
+            groupValue: _value,
+            onChanged: (final value) {
+              if (value != null) {
+                setState(() {
+                  _value = value;
+                });
+              }
+            },
+          ),
+          const SizedBox(height: DsfrSpacings.s1w),
+          DsfrRadioRichButton<int>(
+            title: 'Quatre',
+            value: 4,
             groupValue: _value,
             onChanged: (final value) {
               if (value != null) {
@@ -124,28 +124,28 @@ class _RadiosRichesPageState extends State<RadiosRichesPage> {
             },
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonSet(
+          DsfrRadioButtonGroup.rich(
             title: 'Radios riches en erreur',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
             composantState: DsfrComposantState.error(errorMessage: 'Texte d\'erreur obligatoire'),
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonSet(
+          DsfrRadioButtonGroup.rich(
             title: 'Radios riches en succès',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
             composantState: DsfrComposantState.success(message: 'Texte de succès optionnel'),
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonSet(
+          DsfrRadioButtonGroup.rich(
             title: 'Succès sans texte',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
             composantState: DsfrComposantState.success(),
           ),
           const SizedBox(height: DsfrSpacings.s3w),
-          DsfrRadioRichButtonSet(
+          DsfrRadioButtonGroup.rich(
             title: 'Radios riches désactivé',
             values: const {1: 'Un', 2: 'Deux', 3: 'Trois'},
             onCallback: (final p0) {},
