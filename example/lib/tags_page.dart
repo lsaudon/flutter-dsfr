@@ -21,6 +21,8 @@ class _TagsPageState extends State<TagsPage> {
   bool _isTag2Selected = true;
   bool _isTag3Selected = true;
   bool _isTag4Selected = true;
+  bool _showDeletableTagSm = true;
+  bool _showDeletableTagMd = true;
 
   @override
   Widget build(final context) => SingleChildScrollView(
@@ -59,7 +61,6 @@ class _TagsPageState extends State<TagsPage> {
             ),
             DsfrTag.sm(
               label: TextSpan(text: 'Tag selectionnable'),
-              isSelectable: true,
               isSelected: _isTag1Selected,
               onSelectionChanged: (final isSelected) => setState(() => _isTag1Selected = isSelected),
             ),
@@ -71,10 +72,14 @@ class _TagsPageState extends State<TagsPage> {
               selectedBackgroundColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineLow(context),
               selectedHighlightColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineLowHover(context),
               selectedTextColor: DsfrColorDecisions.textInvertedBlueFrance(context),
-              isSelectable: true,
               isSelected: _isTag2Selected,
               onSelectionChanged: (final isSelected) => setState(() => _isTag2Selected = isSelected),
             ),
+            if (_showDeletableTagSm)
+              DsfrTag.sm(
+                label: TextSpan(text: 'Tag supprimable'),
+                onDelete: () => setState(() => _showDeletableTagSm = false),
+              ),
             Text(
               'Taille MD',
             ),
@@ -105,7 +110,6 @@ class _TagsPageState extends State<TagsPage> {
             ),
             DsfrTag.md(
               label: TextSpan(text: 'Tag selectionnable'),
-              isSelectable: true,
               isSelected: _isTag3Selected,
               onSelectionChanged: (final isSelected) => setState(() => _isTag3Selected = isSelected),
             ),
@@ -117,10 +121,14 @@ class _TagsPageState extends State<TagsPage> {
               selectedBackgroundColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineLow(context),
               selectedHighlightColor: DsfrColorDecisionsExtension.backgroundPurpleGlycineLowHover(context),
               selectedTextColor: DsfrColorDecisions.textInvertedBlueFrance(context),
-              isSelectable: true,
               isSelected: _isTag4Selected,
               onSelectionChanged: (final isSelected) => setState(() => _isTag4Selected = isSelected),
             ),
+            if (_showDeletableTagMd)
+              DsfrTag.md(
+                label: TextSpan(text: 'Tag supprimable'),
+                onDelete: () => setState(() => _showDeletableTagMd = false),
+              ),
           ],
         ),
       );
