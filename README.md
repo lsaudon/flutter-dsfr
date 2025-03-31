@@ -61,3 +61,7 @@ Voici les conventions à suivre pour contribuer :
 - [Composants et modèles (DSFR)](https://www.systeme-de-design.gouv.fr/composants-et-modeles)
 - [DSFR - Fondamentaux (Figma)](https://www.figma.com/community/file/1042832497184172837)
 - [DSFR - Composants (Figma)](https://www.figma.com/community/file/1042832984468443942)
+
+### Remerciements
+
+Merci à Lucas Saudon qui a créé une première base de projet sur laquelle nous avons continué à implémenter le système de design.
