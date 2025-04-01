@@ -15,7 +15,7 @@
 | Barre de recherche (Search)                                        | ❌           |                                                                    |
 | Bouton (Button)                                                    | ✅           |                                                                    |
 | Groupe de boutons (Button group)                                   | ❌           |                                                                    |
-| Bouton FranceConnect                                               | ❌           |                                                                    |
+| Bouton FranceConnect                                               | ✅           |                                                                    |
 | Bouton radio (Radio)                                               | ✅           |                                                                    |
 | Bouton radio riche (Radio rich)                                    | ✅           |                                                                    |
 | Case à cocher (Checkbox)                                           | ✅          |                                                                    |
