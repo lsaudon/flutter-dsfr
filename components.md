@@ -9,7 +9,7 @@
 |--------------------------------------------------------------------|-------------|--------------------------------------------------------------------|
 | Accordéon (Accordion)                                              | ✅           |                                                                    |
 | Ajout de fichier (Upload)                                          | ❌           |                                                                    |
-| Alerte (Alert)                                                     | ❌           |                                                                    |
+| Alerte (Alert)                                                     | ✅           |                                                                    |
 | Badge                                                              | ✅           |                                                                    |
 | Bandeau d'information importante (Notice)                          | ❌           |                                                                    |
 | Barre de recherche (Search)                                        | ❌           |                                                                    |
