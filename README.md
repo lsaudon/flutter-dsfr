@@ -18,6 +18,18 @@ Voir le fichier [Liste des composants](components.md) pour connaître l'avanceme
 
 ## Installation
 
+### Ajout de la dépendance
+
+Le package n'est actuellement pas publié sur pub.dev, mais il est possible d'ajouter la dépendance `flutter_dsfr` dans le fichier `pubspec.yaml` en spécifiant l'url de ce repository et le tag d'une release. Exemple :
+
+```
+dependencies:
+  flutter_dsfr:
+    git:
+      url: https://github.com/Octo-Open-Source/flutter-dsfr.git
+      ref: 0.2.0
+```
+
 ### Gestion du thème
 
 Le Design Système gère deux thèmes : un thème clair et un sombre. Il faut cependant indiquer à la librairie dans quel thème elle doit dessiner ses widgets.
