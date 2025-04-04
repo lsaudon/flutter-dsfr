@@ -63,7 +63,9 @@ Ce projet nécessite d'avoir installé Flutter sur son poste. La version actuell
 ### Conventions
 
 Voici les conventions à suivre pour contribuer :
-- Usage de [Conventional Commits](https://www.conventionalcommits.org/) pour les messages de commit et pour les titres de PR.
+- Nommage - On utilise un prefix "DSFR" + le nom anglais des composants indiqué sur le site du Design System.
+- IDE - Longeur des lignes pour le formattage réglé à 120 caractères. 
+- Commit - Usage de [Conventional Commits](https://www.conventionalcommits.org/) pour les messages de commit et pour les titres de PR.
 
 ### Liens utiles
 
