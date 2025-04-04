@@ -64,7 +64,8 @@ Ce projet nécessite d'avoir installé Flutter sur son poste. La version actuell
 
 Voici les conventions à suivre pour contribuer :
 - Nommage - On utilise un prefix "DSFR" + le nom anglais des composants indiqué sur le site du Design System.
-- IDE - Longeur des lignes pour le formattage réglé à 120 caractères. 
+- IDE - Longeur des lignes pour le formattage réglé à 120 caractères.
+- Documentation - Le fichier [liste des composants](components.md) doit être mis à jour dans la même PR qui contient des nouveautés autour d'un composant.
 - Commit - Usage de [Conventional Commits](https://www.conventionalcommits.org/) pour les messages de commit et pour les titres de PR.
 
 ### Liens utiles
