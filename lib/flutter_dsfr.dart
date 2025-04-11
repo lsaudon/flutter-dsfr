@@ -12,6 +12,7 @@ export 'components/dsfr_badge.dart';
 export 'components/file_uploader.dart';
 export 'components/input.dart';
 export 'components/input_headless.dart';
+export 'components/date_input.dart';
 export 'components/link.dart';
 export 'components/link_icon_position.dart';
 export 'components/modal.dart';
