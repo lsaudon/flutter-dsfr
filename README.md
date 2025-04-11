@@ -12,10 +12,15 @@ Le contenu de ce projet est placé sous licence GPL-3, à l'exception de la font
 
 En savoir plus avec [le DSFR web original](https://github.com/GouvernementFR/dsfr).
 
-## Les composants disponibles
+## Aperçu
 
-Voir le fichier [Liste des composants](components.md) pour connaître l'avancement des composants.
-Vous pouvez également [voir les composants via notre web app](https://octo-open-source.github.io/flutter_dsfr/) (ou en compilant l'app d'exemple sur vos téléphone)
+Un aperçu de l'application d'exemple est déployé en [**version web**](https://octo-open-source.github.io/flutter-dsfr/) pour proposer un aperçu rapide.
+
+**À noter :**
+- Le déploiement web avec Flutter peut comporter des différences avec les versions mobiles.
+- L'aperçu reflète les avancées actuelles des développements sur la branche *main*, et non de la dernière release.
+
+Nous tenons également à jour un fichier avec la [liste des composants](components.md) et leurs avancements.
 
 ## Installation
 
