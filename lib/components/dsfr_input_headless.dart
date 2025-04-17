@@ -1,7 +1,7 @@
 // ignore_for_file: prefer-correct-callback-field-name
 
 import 'package:flutter_dsfr/flutter_dsfr.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions_extension.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';

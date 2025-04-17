@@ -2,8 +2,8 @@ import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
-class RadioIcon<T> extends StatelessWidget {
-  const RadioIcon({
+class DsfrRadioIcon<T> extends StatelessWidget {
+  const DsfrRadioIcon({
     super.key,
     required this.value,
     required this.groupValue,

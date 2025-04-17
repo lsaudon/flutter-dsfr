@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/atoms/dsfr_group.dart';
-import 'package:flutter_dsfr/components/divider.dart';
-import 'package:flutter_dsfr/components/toggle_switches/toggle_switch.dart';
+import 'package:flutter_dsfr/components/dsfr_divider.dart';
+import 'package:flutter_dsfr/components/toggle_switches/dsfr_toggle_switch.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class DsfrToggleSwitchGroup extends StatelessWidget {

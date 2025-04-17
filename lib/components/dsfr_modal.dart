@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/components/buttons/button.dart';
+import 'package:flutter_dsfr/components/buttons/dsfr_button.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';

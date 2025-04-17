@@ -1,5 +1,5 @@
 // ignore_for_file: prefer-declaring-const-constructor
-import 'package:flutter_dsfr/components/buttons/button_variant.dart';
+import 'package:flutter_dsfr/components/buttons/dsfr_button_variant.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
 import 'package:flutter/material.dart';
 

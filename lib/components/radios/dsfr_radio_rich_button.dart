@@ -1,7 +1,7 @@
 import 'package:flutter_dsfr/atoms/focus_widget.dart';
-import 'package:flutter_dsfr/components/radios/radio_icon.dart';
+import 'package:flutter_dsfr/components/radios/dsfr_radio_icon.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter_dsfr/fondamentaux/fonts.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_text_style.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/color_utils.dart';
@@ -64,7 +64,7 @@ class _DsfrRadioRichButtonState<T> extends State<DsfrRadioRichButton<T>>
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          RadioIcon(
+                          DsfrRadioIcon(
                             key: ValueKey(widget.title),
                             value: widget.value,
                             groupValue: widget.groupValue,

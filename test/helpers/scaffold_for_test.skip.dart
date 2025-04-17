@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter_dsfr/helpers/theme_mode_provider.dart';
+import 'package:flutter_dsfr/helpers/dsfr_theme_mode_provider.dart';
 
 class ScaffoldForTest extends StatelessWidget {
   final Widget child;
@@ -10,7 +10,7 @@ class ScaffoldForTest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ThemeModeProvider.withBuilder(
+    return DsfrThemeModeProvider.withBuilder(
       isLightMode: isLightMode,
       builder: (context) {
         return MaterialApp(

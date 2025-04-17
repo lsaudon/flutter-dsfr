@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class FranceConnectButton extends StatelessWidget {
+class DsfrFranceConnectButton extends StatelessWidget {
   final bool isFranceConnectPlus;
   final VoidCallback? onTapButton;
   final VoidCallback? onTapLink;
@@ -11,7 +11,7 @@ class FranceConnectButton extends StatelessWidget {
   final String buttonPrefixLabel;
   final String buttonBoldLabel;
 
-  const FranceConnectButton._({
+  const DsfrFranceConnectButton._({
     super.key,
     required this.isFranceConnectPlus,
     this.onTapButton,
@@ -22,7 +22,7 @@ class FranceConnectButton extends StatelessWidget {
     required this.buttonBoldLabel,
   });
 
-  const FranceConnectButton.franceConnect({
+  const DsfrFranceConnectButton.franceConnect({
     final Key? key,
     final VoidCallback? onTapButton,
     final VoidCallback? onTapLink,
@@ -41,7 +41,7 @@ class FranceConnectButton extends StatelessWidget {
           buttonBoldLabel: buttonBoldLabel,
         );
 
-  const FranceConnectButton.franceConnectPlus({
+  const DsfrFranceConnectButton.franceConnectPlus({
     final Key? key,
     final VoidCallback? onTapButton,
     final VoidCallback? onTapLink,
@@ -148,11 +148,10 @@ class _FranceConnectButtonState extends State<_FranceConnectButton> with Materia
                       ],
                     ),
                     if (widget.isFranceConnectPlus)
-                         SvgPicture.asset(
-                            'packages/flutter_dsfr/assets/icons/france_connect_plus.svg',
-                            excludeFromSemantics: true,
-                          )
-                        ,
+                      SvgPicture.asset(
+                        'packages/flutter_dsfr/assets/icons/france_connect_plus.svg',
+                        excludeFromSemantics: true,
+                      ),
                   ],
                 ),
               ),

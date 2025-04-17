@@ -1,4 +1,4 @@
-import 'package:flutter_dsfr/components/checkboxes/checkbox.dart';
+import 'package:flutter_dsfr/components/checkboxes/dsfr_checkbox.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../../helpers/a11y_test.skip.dart';

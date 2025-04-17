@@ -1,10 +1,10 @@
 // ignore_for_file: prefer-correct-callback-field-name
 
 import 'package:flutter_dsfr/atoms/dsfr_form_state.dart';
-import 'package:flutter_dsfr/components/checkboxes/checkbox.dart';
-import 'package:flutter_dsfr/components/input_headless.dart';
+import 'package:flutter_dsfr/components/checkboxes/dsfr_checkbox.dart';
+import 'package:flutter_dsfr/components/dsfr_input_headless.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter_dsfr/fondamentaux/fonts.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_text_style.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

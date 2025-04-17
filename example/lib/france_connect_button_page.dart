@@ -23,18 +23,18 @@ class FranceConnectButtonPage extends StatelessWidget {
       child: Column(
         spacing: 20,
         children: [
-          FranceConnectButton.franceConnect(
+          DsfrFranceConnectButton.franceConnect(
             onTapButton: () {},
             onTapLink: () {
               _launchUrlOnBrowser('https://franceconnect.gouv.fr/');
             },
           ),
-          FranceConnectButton.franceConnectPlus(
+          DsfrFranceConnectButton.franceConnectPlus(
               onTapButton: () {},
               onTapLink: () {
                 _launchUrlOnBrowser('https://franceconnect.gouv.fr/france-connect-plus');
               }),
-          FranceConnectButton.franceConnect(
+          DsfrFranceConnectButton.franceConnect(
             enabled: false,
             onTapButton: () {},
             onTapLink: () {

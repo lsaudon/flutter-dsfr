@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/flutter_dsfr.dart';
-import 'package:flutter_dsfr/fondamentaux/color_decisions_extension.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_color_decisions_extension.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
 enum DsfrBadgeType {

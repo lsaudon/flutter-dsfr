@@ -1,24 +1,24 @@
-import 'package:flutter_dsfr/components/buttons/france_connect_button.dart';
+import 'package:flutter_dsfr/components/buttons/dsfr_france_connect_button.dart';
 import '../../../helpers/a11y_test.skip.dart';
 
 void main() {
-  final franceConnectButton = FranceConnectButton.franceConnect(
+  final franceConnectButton = DsfrFranceConnectButton.franceConnect(
     onTapButton: () {},
     onTapLink: () {},
   );
 
-  final franceConnectPlusButton = FranceConnectButton.franceConnectPlus(
+  final franceConnectPlusButton = DsfrFranceConnectButton.franceConnectPlus(
     onTapButton: () {},
     onTapLink: () {},
   );
 
-  final franceConnectDisabledButton = FranceConnectButton.franceConnect(
+  final franceConnectDisabledButton = DsfrFranceConnectButton.franceConnect(
     onTapButton: () {},
     onTapLink: () {},
     enabled: false,
   );
 
-  final franceConnectPlusDisabledButton = FranceConnectButton.franceConnectPlus(
+  final franceConnectPlusDisabledButton = DsfrFranceConnectButton.franceConnectPlus(
     onTapButton: () {},
     onTapLink: () {},
     enabled: false,
@@ -30,9 +30,13 @@ void main() {
   accessibilityTest(componentName: 'bouton france connect+', isLightMode: true, child: franceConnectPlusButton);
   accessibilityTest(componentName: 'bouton france connect+', isLightMode: false, child: franceConnectPlusButton);
 
-  accessibilityTest(componentName: 'bouton france connect désactivé', isLightMode: true, child: franceConnectDisabledButton);
-  accessibilityTest(componentName: 'bouton france connect désactivé', isLightMode: false, child: franceConnectDisabledButton);
+  accessibilityTest(
+      componentName: 'bouton france connect désactivé', isLightMode: true, child: franceConnectDisabledButton);
+  accessibilityTest(
+      componentName: 'bouton france connect désactivé', isLightMode: false, child: franceConnectDisabledButton);
 
-  accessibilityTest(componentName: 'bouton france connect+ désactivé', isLightMode: true, child: franceConnectPlusDisabledButton);
-  accessibilityTest(componentName: 'bouton france connect+ désactivé', isLightMode: false, child: franceConnectPlusDisabledButton);
+  accessibilityTest(
+      componentName: 'bouton france connect+ désactivé', isLightMode: true, child: franceConnectPlusDisabledButton);
+  accessibilityTest(
+      componentName: 'bouton france connect+ désactivé', isLightMode: false, child: franceConnectPlusDisabledButton);
 }

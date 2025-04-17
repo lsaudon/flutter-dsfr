@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/components/sliders/range_slider.dart';
-import 'package:flutter_dsfr/components/sliders/slider.dart';
+import 'package:flutter_dsfr/components/sliders/dsfr_range_slider.dart';
+import 'package:flutter_dsfr/components/sliders/dsfr_slider.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../helpers/a11y_test.skip.dart';

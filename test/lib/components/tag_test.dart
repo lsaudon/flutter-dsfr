@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/components/tag.dart';
+import 'package:flutter_dsfr/components/dsfr_tag.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import '../../helpers/a11y_test.skip.dart';
 

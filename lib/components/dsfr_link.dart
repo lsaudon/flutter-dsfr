@@ -1,7 +1,7 @@
 import 'package:flutter_dsfr/atoms/focus_widget.dart';
-import 'package:flutter_dsfr/components/link_icon_position.dart';
+import 'package:flutter_dsfr/components/dsfr_link_icon_position.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter_dsfr/fondamentaux/fonts.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_text_style.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';

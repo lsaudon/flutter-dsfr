@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/components/buttons/raw_button.dart';
+import 'package:flutter_dsfr/components/buttons/dsfr_raw_button.dart';
 import 'package:flutter_dsfr/fondamentaux/spacing.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 
-import 'package:flutter_dsfr/components/buttons/button_icon_location.dart';
-import 'package:flutter_dsfr/components/buttons/button_variant.dart';
+import 'package:flutter_dsfr/components/buttons/dsfr_button_icon_location.dart';
+import 'package:flutter_dsfr/components/buttons/dsfr_button_variant.dart';
 
-export 'button_icon_location.dart';
-export 'button_variant.dart';
-export 'raw_button.dart';
+export 'dsfr_button_icon_location.dart';
+export 'dsfr_button_variant.dart';
+export 'dsfr_raw_button.dart';
 
 class DsfrButton extends StatelessWidget {
   const DsfrButton({

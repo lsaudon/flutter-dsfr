@@ -1,6 +1,6 @@
 import 'package:flutter_dsfr/flutter_dsfr.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/fondamentaux/shadow_decisions.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_shadow_decisions.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import 'package:flutter_svg/svg.dart';
 

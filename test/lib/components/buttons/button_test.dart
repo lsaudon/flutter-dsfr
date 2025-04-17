@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/components/buttons/button.dart';
+import 'package:flutter_dsfr/components/buttons/dsfr_button.dart';
 import 'package:flutter_dsfr/fondamentaux/icons.g.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_size.dart';
 import 'package:flutter_test/flutter_test.dart';

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class ThemeModeProvider extends InheritedWidget {
+class DsfrThemeModeProvider extends InheritedWidget {
   final bool isLightMode;
 
-  const ThemeModeProvider._({
+  const DsfrThemeModeProvider._({
     super.key,
     required this.isLightMode,
     required super.child,
   });
 
-  factory ThemeModeProvider.withBuilder({
+  factory DsfrThemeModeProvider.withBuilder({
     Key? key,
     required bool isLightMode,
     required WidgetBuilder builder,
   }) {
-    return ThemeModeProvider._(
+    return DsfrThemeModeProvider._(
       key: key,
       isLightMode: isLightMode,
       child: Builder(
@@ -23,12 +23,12 @@ class ThemeModeProvider extends InheritedWidget {
     );
   }
 
-  static ThemeModeProvider? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ThemeModeProvider>();
+  static DsfrThemeModeProvider? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<DsfrThemeModeProvider>();
   }
 
   @override
-  bool updateShouldNotify(ThemeModeProvider oldWidget) {
+  bool updateShouldNotify(DsfrThemeModeProvider oldWidget) {
     return oldWidget.isLightMode != isLightMode;
   }
 }

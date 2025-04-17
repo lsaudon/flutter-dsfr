@@ -2,8 +2,8 @@ import 'package:example/mise_en_page/page_section.dart';
 import 'package:example/mise_en_page/page_sub_section.dart';
 import 'package:example/page_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dsfr/components/sliders/range_slider.dart';
-import 'package:flutter_dsfr/components/sliders/slider.dart';
+import 'package:flutter_dsfr/components/sliders/dsfr_range_slider.dart';
+import 'package:flutter_dsfr/components/sliders/dsfr_slider.dart';
 import 'package:flutter_dsfr/helpers/dsfr_component_state.dart';
 
 class SliderPage extends StatefulWidget {

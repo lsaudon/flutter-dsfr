@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dsfr/fondamentaux/color_decisions.g.dart';
-import 'package:flutter_dsfr/fondamentaux/fonts.dart';
+import 'package:flutter_dsfr/fondamentaux/dsfr_text_style.dart';
 
 class PageSection extends StatelessWidget {
   const PageSection({super.key, required this.title, required this.children});
