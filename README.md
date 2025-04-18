@@ -74,6 +74,15 @@ Voici les conventions à suivre pour contribuer :
 - Documentation - Le fichier [liste des composants](components.md) doit être mis à jour dans la même PR qui contient des nouveautés autour d'un composant.
 - Commit - Usage de [Conventional Commits](https://www.conventionalcommits.org/) pour les messages de commit et pour les titres de PR.
 
+### Création d'une release
+
+- Faire un commit pour bump les numéro de versions
+  - Modifier le numéro de version dans le fichier `pubspec.yaml`
+  - Modifier le numéro de version dans le fichier `README.md`
+- [Créer une nouvelle release](https://github.com/Octo-Open-Source/flutter-dsfr/releases) sur GitHub
+  - Créer un tag avec le même numéro de version
+  - Générer la release notes à partir des PRs
+
 ### Liens utiles
 
 - [Premiers pas sur Figma (DSFR)](https://www.systeme-de-design.gouv.fr/prise-en-main-et-perimetre/designers/premiers-pas-sur-figma/)
