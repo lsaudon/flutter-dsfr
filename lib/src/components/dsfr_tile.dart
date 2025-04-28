@@ -14,9 +14,10 @@ enum DsfrTileBackgroundType {
   transparent,
 }
 
-class DsfrTile extends StatelessWidget {
-  const DsfrTile._({
+class DsfrTile extends StatefulWidget {
+  const DsfrTile({
     super.key,
+    this.direction = Axis.vertical,
     this.backgroundType,
     required this.title,
     this.description,
@@ -31,63 +32,12 @@ class DsfrTile extends StatelessWidget {
     this.actionIcon = DsfrIcons.systemArrowRightLine,
   }) : assert(badgesAndTags == null || (badgesAndTags.length <= _badgesAndTagsMaxLength));
 
-  const DsfrTile.sm({
-    final Key? key,
-    final DsfrTileBackgroundType? backgroundType,
-    required final String title,
-    final String? description,
-    final String? detail,
-    final String? imageAsset,
-    final GestureTapCallback? onTap,
-    final bool enabled = true,
-    final List<Widget>? badgesAndTags,
-    final bool showActionIcon = true,
-    final IconData? actionIcon = DsfrIcons.systemArrowRightLine,
-  }) : this._(
-          key: key,
-          backgroundType: backgroundType,
-          title: title,
-          description: description,
-          details: detail,
-          size: DsfrComponentSize.sm,
-          imageAsset: imageAsset,
-          onTap: onTap,
-          enabled: enabled,
-          badgesAndTags: badgesAndTags,
-          showActionIcon: showActionIcon,
-          actionIcon: actionIcon,
-        );
-
-  const DsfrTile.md({
-    final Key? key,
-    final DsfrTileBackgroundType? backgroundType,
-    required final String title,
-    final String? description,
-    final String? detail,
-    final String? imageAsset,
-    final GestureTapCallback? onTap,
-    final bool enabled = true,
-    final List<Widget>? badgesAndTags,
-    final bool showActionIcon = true,
-    final IconData? actionIcon = DsfrIcons.systemArrowRightLine,
-  }) : this._(
-          key: key,
-          backgroundType: backgroundType,
-          title: title,
-          description: description,
-          details: detail,
-          size: DsfrComponentSize.md,
-          imageAsset: imageAsset,
-          onTap: onTap,
-          enabled: enabled,
-          badgesAndTags: badgesAndTags,
-        );
-
+  final DsfrComponentSize size;
+  final Axis direction;
   final DsfrTileBackgroundType? backgroundType;
   final String title;
   final String? description;
   final String? details;
-  final DsfrComponentSize size;
   final GestureTapCallback? onTap;
   final String? imageAsset;
   final FocusNode? focusNode;
@@ -96,8 +46,104 @@ class DsfrTile extends StatelessWidget {
   final bool showActionIcon;
   final IconData? actionIcon;
 
+  @override
+  State<DsfrTile> createState() => _DsfrTileState();
+}
+
+class _DsfrTileState extends State<DsfrTile> {
+  bool hasFocus = false;
+
+  @override
+  Widget build(final context) {
+    final enabled = widget.enabled;
+    final focusNode = widget.focusNode;
+    final badgesAndTags = widget.badgesAndTags;
+    final onTap = widget.onTap;
+    final direction = widget.direction;
+    final title = widget.title;
+    final description = widget.description;
+    final details = widget.details;
+    final imageAsset = widget.imageAsset;
+    final showActionIcon = widget.showActionIcon;
+    final actionIcon = widget.actionIcon;
+
+    List<Widget>? badgesAndTagsToAdd =
+      badgesAndTags?.takeWhile((element) => element is DsfrBadge || element is DsfrTag).toList();
+
+    return MergeSemantics(
+        child: Semantics(
+          enabled: enabled,
+          child: DsfrFocusWidget(
+                  isFocused: hasFocus,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: _getShadow(context),
+                      border: _getBottomBorder(context),
+                    ),
+                    child: Material(
+                      color: _getBackgroundColor(context),
+                      child: InkWell(
+                        onFocusChange: (final hasFocus) => setState(() => this.hasFocus = hasFocus),
+                        focusNode: focusNode,
+                        onTap: onTap,
+                        child: Container(
+                          padding: const EdgeInsets.all(24.0),
+                          decoration: BoxDecoration(
+                            border: _getTopRightLeftBorder(context),
+                          ),
+                          child: Builder(
+                            builder: (context) {
+                              return switch (direction) {
+                                Axis.vertical => _VerticalTile(
+                                  imageAsset: imageAsset,
+                                  imageHeight: _getImageHeight(),
+                                  badgesAndTagsToAdd: badgesAndTagsToAdd,
+                                  paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
+                                  paddingTitleAndDescription: _getPaddingTitleAndDescription(),
+                                  paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
+                                  title: title,
+                                  description: description,
+                                  details: details,
+                                  titleTextStyle: _getTitleTextStyle(context),
+                                  descriptionTextStyle: _getDescriptionTextStyle(context),
+                                  showActionIcon: showActionIcon,
+                                  actionIcon: actionIcon,
+                                  iconSize: _getIconSize(),
+                                  iconColor: _getIconColor(context),
+                                  onTap: onTap,
+                                ),
+                                Axis.horizontal => _HorizontalTile(
+                                  imageAsset: imageAsset,
+                                  imageHeight: _getImageHeight(),
+                                  badgesAndTagsToAdd: badgesAndTagsToAdd,
+                                  paddingBadgesAndTitle: _getPaddingBadgesAndTitle(),
+                                  paddingTitleAndDescription: _getPaddingTitleAndDescription(),
+                                  paddingDescriptionAndDetails: _getPaddingDescriptionAndDetail(),
+                                  title: title,
+                                  description: description,
+                                  details: details,
+                                  titleTextStyle: _getTitleTextStyle(context),
+                                  descriptionTextStyle: _getDescriptionTextStyle(context),
+                                  showActionIcon: showActionIcon,
+                                  actionIcon: actionIcon,
+                                  iconSize: _getIconSize(),
+                                  iconColor: _getIconColor(context),
+                                  onTap: onTap,
+                                ),
+                              };
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+            ),
+          ),
+        );
+  }
+
   Color _getTextColor(BuildContext context) {
-    if (enabled) {
+    if (widget.enabled) {
       return DsfrColorDecisions.textTitleBlueFrance(context);
     } else {
       return DsfrColorDecisions.textDisabledGrey(context);
@@ -105,7 +151,7 @@ class DsfrTile extends StatelessWidget {
   }
 
   Color _getIconColor(BuildContext context) {
-    if (enabled) {
+    if (widget.enabled) {
       return DsfrColorDecisions.textActionHighBlueFrance(context);
     } else {
       return DsfrColorDecisions.textDisabledGrey(context);
@@ -114,84 +160,84 @@ class DsfrTile extends StatelessWidget {
 
   DsfrTextStyle _getTitleTextStyle(BuildContext context) {
     var textColor = _getTextColor(context);
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return DsfrTextStyle.bodyLgBold(color: textColor);
       case DsfrComponentSize.sm:
         return DsfrTextStyle.bodyMdBold(color: textColor);
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   DsfrTextStyle _getDescriptionTextStyle(BuildContext context) {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return DsfrTextStyle.bodyMdMedium(color: DsfrColorDecisions.textDefaultGrey(context));
       case DsfrComponentSize.sm:
         return DsfrTextStyle.bodySmMedium(color: DsfrColorDecisions.textDefaultGrey(context));
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   double _getImageHeight() {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return 80;
       case DsfrComponentSize.sm:
         return 56;
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   double _getIconSize() {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return 24;
       case DsfrComponentSize.sm:
         return 16;
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   double _getPaddingBadgesAndTitle() {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return 12;
       case DsfrComponentSize.sm:
         return 8;
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   double _getPaddingTitleAndDescription() {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return 8;
       case DsfrComponentSize.sm:
         return 4;
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   double _getPaddingDescriptionAndDetail() {
-    switch (size) {
+    switch (widget.size) {
       case DsfrComponentSize.md:
         return 16;
       case DsfrComponentSize.sm:
         return 12;
       default:
-        throw UnimplementedError('Size $size is not implemented');
+        throw UnimplementedError('Size ${widget.size} is not implemented');
     }
   }
 
   Color _getBackgroundColor(BuildContext context) {
-    switch (backgroundType) {
+    switch (widget.backgroundType) {
       case DsfrTileBackgroundType.grey:
         return DsfrColorDecisions.backgroundContrastGrey(context);
       case DsfrTileBackgroundType.transparent:
@@ -202,10 +248,10 @@ class DsfrTile extends StatelessWidget {
   }
 
   BoxBorder? _getBottomBorder(BuildContext context) {
-    Color bottomBorderColor = (onTap == null)
+    Color bottomBorderColor = (widget.onTap == null)
         ? DsfrColorDecisions.borderPlainGrey(context)
         : DsfrColorDecisions.borderPlainBlueFrance(context);
-    if (backgroundType == DsfrTileBackgroundType.lightNoBorder) {
+    if (widget.backgroundType == DsfrTileBackgroundType.lightNoBorder) {
       return null;
     } else {
       return Border(
@@ -216,7 +262,7 @@ class DsfrTile extends StatelessWidget {
 
   BoxBorder? _getTopRightLeftBorder(BuildContext context) {
     DsfrColorDecisions.borderPlainBlueFrance(context);
-    if (backgroundType == DsfrTileBackgroundType.lightNoBorder) {
+    if (widget.backgroundType == DsfrTileBackgroundType.lightNoBorder) {
       return null;
     } else {
       return Border(
@@ -228,90 +274,214 @@ class DsfrTile extends StatelessWidget {
   }
 
   List<BoxShadow>? _getShadow(BuildContext context) {
-    return backgroundType == DsfrTileBackgroundType.lightWithShadow ? [DsfrShadowDecisions.raised(context)] : null;
+    return widget.backgroundType == DsfrTileBackgroundType.lightWithShadow ? [DsfrShadowDecisions.raised(context)] : null;
   }
+}
+
+class _VerticalTile extends StatelessWidget {
+  final String? imageAsset;
+  final double imageHeight;
+  final List<Widget>? badgesAndTagsToAdd;
+  final double paddingBadgesAndTitle;
+  final double paddingTitleAndDescription;
+  final double paddingDescriptionAndDetails;
+  final String title;
+  final String? description;
+  final String? details;
+  final TextStyle titleTextStyle;
+  final TextStyle descriptionTextStyle;
+  final bool showActionIcon;
+  final IconData? actionIcon;
+  final double iconSize;
+  final Color iconColor;
+  final GestureTapCallback? onTap;
+
+  const _VerticalTile({
+    required this.imageAsset,
+    required this.imageHeight,
+    required this.badgesAndTagsToAdd,
+    required this.paddingBadgesAndTitle,
+    required this.paddingTitleAndDescription,
+    required this.paddingDescriptionAndDetails,
+    required this.title,
+    required this.description,
+    required this.details,
+    required this.titleTextStyle,
+    required this.descriptionTextStyle,
+    required this.showActionIcon,
+    required this.actionIcon,
+    required this.iconSize,
+    required this.iconColor,
+    required this.onTap,
+  });
 
   @override
-  Widget build(final context) {
-    return Focus(
-      focusNode: focusNode,
-      canRequestFocus: enabled,
-      child: Builder(builder: (final context) {
-        final isFocused = Focus.of(context).hasFocus;
-        List<Widget>? badgesAndTagsToAdd =
-            badgesAndTags?.takeWhile((element) => element is DsfrBadge || element is DsfrTag).toList();
-        return DsfrFocusWidget(
-            isFocused: isFocused,
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: _getShadow(context),
-                border: _getBottomBorder(context),
-              ),
-              child: Material(
-                color: _getBackgroundColor(context),
-                child: InkWell(
-                  onTap: onTap,
-                  child: Container(
-                    padding: const EdgeInsets.all(24.0),
-                    decoration: BoxDecoration(
-                      border: _getTopRightLeftBorder(context),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (imageAsset != null)
-                          if (imageAsset!.endsWith('svg'))
-                            SvgPicture.asset(
-                              imageAsset!,
-                              height: _getImageHeight(),
-                              fit: BoxFit.fitHeight,
-                              excludeFromSemantics: true,
-                            )
-                          else
-                            Image.asset(imageAsset!, height: _getImageHeight(), fit: BoxFit.fitHeight),
-                        if (imageAsset != null) const SizedBox(height: _paddingImageAndBadges),
-                        if (badgesAndTagsToAdd != null && badgesAndTagsToAdd.isNotEmpty)
-                          Column(
-                            children: [
-                              ExcludeFocus(
-                                  child: Column(
-                                children: [...badgesAndTagsToAdd],
-                              )),
-                              SizedBox(height: _getPaddingBadgesAndTitle()),
-                            ],
-                          ),
-                        Text(
-                          title,
-                          style: _getTitleTextStyle(context),
-                        ),
-                        if (description != null) SizedBox(height: _getPaddingTitleAndDescription()),
-                        if (description != null)
-                          Text(
-                            description!,
-                            style: _getDescriptionTextStyle(context),
-                          ),
-                        if (details != null) SizedBox(height: _getPaddingDescriptionAndDetail()),
-                        if (details != null)
-                          Text(
-                            details!,
-                            style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
-                          ),
-                        if (showActionIcon && onTap != null)
-                          Container(
-                            alignment: Alignment.centerRight,
-                            child: Icon(
-                              actionIcon,
-                              size: _getIconSize(),
-                              color: _getIconColor(context),
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ));
-      }),
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (imageAsset != null) _TileImage(imageAsset: imageAsset!, height: imageHeight),
+        if (imageAsset != null) const SizedBox(height: _paddingImageAndBadges),
+        if (badgesAndTagsToAdd != null && badgesAndTagsToAdd!.isNotEmpty)
+          Column(
+            children: [
+              ...badgesAndTagsToAdd!,
+              SizedBox(height: paddingBadgesAndTitle),
+            ],
+          ),
+        Text(
+          title,
+          style: titleTextStyle,
+        ),
+        if (description != null) ...[
+          SizedBox(height: paddingTitleAndDescription),
+          Text(
+            description!,
+            style: descriptionTextStyle,
+          ),
+        ],
+        if (details != null) ...[
+          SizedBox(height: paddingDescriptionAndDetails),
+          Text(
+            details!,
+            style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
+          ),
+        ],
+        if (showActionIcon && onTap != null)
+          Container(
+            alignment: Alignment.centerRight,
+            child: Icon(
+              actionIcon,
+              size: iconSize,
+              color: iconColor,
+            ),
+          ),
+      ],
     );
+  }
+}
+
+class _HorizontalTile extends StatelessWidget {
+  final String? imageAsset;
+  final double imageHeight;
+  final List<Widget>? badgesAndTagsToAdd;
+  final double paddingBadgesAndTitle;
+  final double paddingTitleAndDescription;
+  final double paddingDescriptionAndDetails;
+  final String title;
+  final String? description;
+  final String? details;
+  final TextStyle titleTextStyle;
+  final TextStyle descriptionTextStyle;
+  final bool showActionIcon;
+  final IconData? actionIcon;
+  final double iconSize;
+  final Color iconColor;
+  final GestureTapCallback? onTap;
+
+  const _HorizontalTile({
+    required this.imageAsset,
+    required this.imageHeight,
+    required this.badgesAndTagsToAdd,
+    required this.paddingBadgesAndTitle,
+    required this.paddingTitleAndDescription,
+    required this.paddingDescriptionAndDetails,
+    required this.title,
+    required this.description,
+    required this.details,
+    required this.titleTextStyle,
+    required this.descriptionTextStyle,
+    required this.showActionIcon,
+    required this.actionIcon,
+    required this.iconSize,
+    required this.iconColor,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 24,
+        children: [
+          if (imageAsset != null) _TileImage(imageAsset: imageAsset!, height: imageHeight),
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (badgesAndTagsToAdd != null && badgesAndTagsToAdd!.isNotEmpty)
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ExcludeFocus(
+                          child: Column(
+                        children: [...badgesAndTagsToAdd!],
+                      )),
+                      SizedBox(height: paddingBadgesAndTitle),
+                    ],
+                  ),
+                Text(
+                  title,
+                  style: titleTextStyle,
+                ),
+                if (description != null) ...[
+                  SizedBox(height: paddingTitleAndDescription),
+                  Text(
+                    description!,
+                    style: descriptionTextStyle,
+                  ),
+                ],
+                if (details != null || (showActionIcon && onTap != null))
+                  SizedBox(height: paddingDescriptionAndDetails),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    if (details != null)
+                      Text(
+                        details!,
+                        style: DsfrTextStyle.bodyXsMedium(color: DsfrColorDecisions.textMentionGrey(context)),
+                      ),
+                    if (showActionIcon && onTap != null)
+                      Icon(
+                        actionIcon,
+                        size: iconSize,
+                        color: iconColor,
+                      ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ]);
+  }
+}
+
+class _TileImage extends StatelessWidget {
+  final String imageAsset;
+  final double height;
+
+  const _TileImage({
+    required this.imageAsset,
+    required this.height,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (imageAsset.endsWith('svg')) {
+      return SvgPicture.asset(
+        imageAsset,
+        height: height,
+        fit: BoxFit.fitHeight,
+        excludeFromSemantics: true,
+      );
+    } else {
+      return Image.asset(imageAsset, height: height, fit: BoxFit.fitHeight);
+    }
   }
 }
