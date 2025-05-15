@@ -43,6 +43,7 @@ class DsfrInputHeadless extends StatefulWidget {
     this.autofillHints,
     this.maxLength,
     this.textAlign = TextAlign.start,
+    this.focusNode,
   });
 
   final String? initialValue;
@@ -80,6 +81,7 @@ class DsfrInputHeadless extends StatefulWidget {
   final Iterable<String>? autofillHints;
   final int? maxLength;
   final TextAlign textAlign;
+  final FocusNode? focusNode;
 
   @override
   State<DsfrInputHeadless> createState() => _DsfrInputHeadlessState();
@@ -87,11 +89,12 @@ class DsfrInputHeadless extends StatefulWidget {
 
 class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
   bool _isFocused = false;
-  final _focusNode = FocusNode();
+  late FocusNode _focusNode;
 
   @override
   void initState() {
     super.initState();
+    _focusNode = widget.focusNode ?? FocusNode();
     _focusNode.addListener(_listener);
   }
 
@@ -161,7 +164,7 @@ class _DsfrInputHeadlessState extends State<DsfrInputHeadless> {
             initialValue: widget.initialValue,
             focusNode: _focusNode,
             decoration: InputDecoration(
-              suffixIcon: widget.isDatePicker ? Icon(DsfrIcons.businessCalendarLine) : null,
+              suffixIcon: widget.isDatePicker ? Icon(DsfrIcons.businessCalendarLine, size: 16) : null,
               suffixText: widget.suffixText,
               suffixStyle: widget.enabled
                   ? DsfrTextStyle.bodyMd(color: widget.inputColor ?? DsfrColorDecisions.textDefaultGrey(context))

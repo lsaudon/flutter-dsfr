@@ -87,6 +87,7 @@ class InputsPage extends StatelessWidget {
                 minLines: 3,
                 maxLines: 5,
                 onChanged: (final value) {},
+                focusNode: FocusNode(),
               ),
               DsfrInput(
                 label: 'Input zone de texte plusieurs lignes',
@@ -124,7 +125,7 @@ class InputsPage extends StatelessWidget {
               Text("Input sans label :"),
               DsfrInputHeadless(onChanged: print),
               Text("Input sans label, avec suffix : "),
-              const DsfrInputHeadless(suffixText: '€', onChanged: print),
+              DsfrInputHeadless(suffixText: '€', onChanged: print),
               SizedBox(height: 26),
             ],
           ),
